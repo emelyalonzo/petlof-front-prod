@@ -1,0 +1,71 @@
+.signUp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+.signUpForm {
+    display: flex;
+    justify-content: center;
+    
+    &__section {
+        flex-direction: column;
+        padding: 20px;
+        // width: 35%;
+        text-align: start;
+    }
+
+    &__input {
+        padding: 15px 30px;
+        margin: 10px 0;
+        font-size: 15px;
+        border: solid 2px rgb(219, 219, 219);
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    &__multipleInput {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__label {
+        padding: 10px;
+        border: solid 2px rgb(144, 144, 144);
+        border-radius: 10px;
+        transition: all 0.3s;
+        margin: 10px 10px 10px 0;
+    }
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="number"] {
+    width: 10%;
+}
+
+input[type="submit"] {
+    width: 248px;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(235,235,235);
+}
+
+input[type="submit"]:active {
+    background-color: rgb(226,115,155);
+}
+
+// -webkit-appearance: none;
+
+
+
+
+

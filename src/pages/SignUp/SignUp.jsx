@@ -2,73 +2,96 @@ import React, { useState} from 'react';
 import Nav from '../../components/nav/Nav';
 
 const Signup = () => {
+    const [formData, setFormData] = useState({
+        user_id: '',
+        first_name: '',
+        dob_day: '',
+        dob_month: '',
+        dob_year: '',
+        show_me: '',
+        gender_identify:'',
+        gender_interest: '',
+        email: '',
+        password: '',
+        url: '',
+        about: '',
+        matches: []
+    })
 
     const handleSubmit = () => {
         console.log('submitted');
     }
 
-    const handleChange = () => {
-        console.log('change');
+    const handleChange = (e) => {
+        console.log('e', e)
+        const value = e.target.value
+        const name = e.target.name
+        console.log('value' + value, 'name' + name);
+
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value
+        }))
     }
 
     return (
         <>
             <Nav/>
-            <div className='signup'>
+            <div className='signUp'>
                 <h2>CREAR CUENTA</h2>
 
-                <form onSubmit={handleSubmit}>
-                    <section>
+                <form onSubmit={handleSubmit} className="signUpForm">
+                    <section className='signUpForm__section'>
                         <label htmlFor="first_name">Nombre
-                        <div className='multiple-input-container'>
-                            <input
+                        <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
                                 id="first_name"
                                 type="text"
                                 name="first_name"
                                 placeholder="Nombre"
                                 required={true}
-                                value={""}
+                                value={formData.first_name}
                                 onChange={handleChange}
                             />
                         </div>
                         </label> 
 
-                        <label htmlFor="dob_day">Cumpleaños
-                        <div className='multiple-input-container'>
-                            <input
+                        <label htmlFor="dob_day" >Cumpleaños
+                        <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
                                 id="dob_day"
-                                type="number"
+                                type="number" 
                                 name="dob_day"
                                 placeholder="dd"
                                 required={true}
-                                value={""}
+                                value={formData.dob_day}
                                 onChange={handleChange}
                             />
-                            <input
+                            <input className='signUpForm__input'
                                 id="dob_month"
                                 type="number"
                                 name="dob_month"
                                 placeholder="mm"
                                 required={true}
-                                value={""}
+                                value={formData.dob_month}
                                 onChange={handleChange}
                             />
-                            <input
+                            <input className='signUpForm__input'
                                 id="dob_year"
                                 type="number"
                                 name="dob_year"
                                 placeholder="aaaa"
                                 required={true}
-                                value={""}
+                                value={formData.dob_year}
                                 onChange={handleChange}
                             />
                         </div>
                         </label> 
 
-                        <label htmlFor="gender_identify">Género
-                        <div className='multiple-input-container'>
-                            <label htmlFor="man-gender_identify">Gato</label>
-                            <input
+                        <label htmlFor="gender_identify" >Género
+                        <div className='signUpForm__multipleInput'>
+                            <label htmlFor="man-gender_identify" className='signUpForm__label'>Gato</label>
+                            <input className='signUpForm__input'
                                 id="man-gender_identify"
                                 type="radio"
                                 name="gender_identify"                                
@@ -77,8 +100,8 @@ const Signup = () => {
                                 onChange={handleChange}
                                 checked={false}
                             />
-                            <label htmlFor="woman-gender_identify">Gata</label>
-                            <input
+                            <label htmlFor="woman-gender_identify" className='signUpForm__label'>Gata</label>
+                            <input className='signUpForm__input'
                                 id="woman-gender_identify"
                                 type="radio"
                                 name="gender_identify"                               
@@ -87,8 +110,8 @@ const Signup = () => {
                                 onChange={handleChange}
                                 checked={false}
                             />
-                            <label htmlFor="other-gender_identify">Otros</label>
-                            <input
+                            <label htmlFor="other-gender_identify" className='signUpForm__label'>Otros</label>
+                            <input className='signUpForm__input'
                                 id="more-gender_identify"
                                 type="radio"
                                 name="gender_identify"                    
@@ -100,9 +123,9 @@ const Signup = () => {
                         </div>
                         </label> 
 
-                        <label htmlFor="animal">
-                        <div className='multiple-input-container'>
-                            <input
+                        {/* <label htmlFor="animal" className='signUpForm__label'>
+                        <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
                                 id="animal"
                                 type="radio"
                                 name="animal"
@@ -112,12 +135,12 @@ const Signup = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        </label> 
+                        </label>  */}
 
                         <label htmlFor="show_me">Muéstrame
-                        <div className='multiple-input-container'>
-                            <label htmlFor="man-gender_interest">Gato</label>
-                            <input
+                        <div className='signUpForm__multipleInput'>
+                            <label htmlFor="man-gender_interest" className='signUpForm__label'>Gato</label>
+                            <input className='signUpForm__input'
                                 id="man-gender_interest"
                                 type="radio"
                                 name="gender_interest"                                
@@ -126,8 +149,8 @@ const Signup = () => {
                                 onChange={handleChange}
                                 checked={false}
                             />
-                            <label htmlFor="woman-gender_interest">Gata</label>
-                            <input
+                            <label htmlFor="woman-gender_interest" className='signUpForm__label'>Gata</label>
+                            <input className='signUpForm__input'
                                 id="woman-gender_interest"
                                 type="radio"
                                 name="gender_interest"                               
@@ -136,8 +159,8 @@ const Signup = () => {
                                 onChange={handleChange}
                                 checked={false}
                             />
-                            <label htmlFor="everyone-gender_interest">Todos</label>
-                            <input
+                            <label htmlFor="everyone-gender_interest" className='signUpForm__label'>Todos</label>
+                            <input className='signUpForm__input'
                                 id="everyone-gender_interest"
                                 type="radio"
                                 name="gender_interest"                    
@@ -145,11 +168,74 @@ const Signup = () => {
                                 value="everyone"
                                 onChange={handleChange}
                                 checked={false}
-                            />
+                            />  
                         </div>
                         </label> 
-                       
+
+                        <label htmlFor="about">Sobre mí
+                        <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
+                                id="about"
+                                type="text"
+                                name="about" 
+                                required={true}
+                                placeholder="Me gusta la música"                   
+                                value={formData.about}
+                                onChange={handleChange}  
+                            />
+                        </div>
+                        </label>
+
+                        <label htmlFor="email">Email
+                        <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
+                                id="email"
+                                type="text"
+                                name="email" 
+                                required={true}
+                                placeholder="Email"                   
+                                value={formData.email}
+                                onChange={handleChange}  
+                            />
+                        </div>
+                        </label>  
+
+                        <label htmlFor="password">Password
+                        <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
+                                id="password"
+                                type="password"
+                                name="password" 
+                                required={true}
+                                placeholder="Password"                   
+                                value={formData.password}
+                                onChange={handleChange}  
+                            />
+                        </div>
+                        </label>  
+
+                            <input className='signUpForm__input' type="submit" value="Enviar"/>                  
                     </section>
+
+                    <section className='signUpForm__section'>
+                    <label htmlFor="url">Perfil
+                    <div className='signUpForm__multipleInput'>
+                            <input className='signUpForm__input'
+                                id="url"
+                                type="url"
+                                name="url" 
+                                required={true}
+                                onChange={handleChange}
+                            />  
+                    </div>
+                    </label>
+
+                    <div className='photo-container'>
+                        <img src={formData.url} alt="profile pic preview"/>
+
+                    </div>
+                    </section>                   
+
 
                 </form> 
 
