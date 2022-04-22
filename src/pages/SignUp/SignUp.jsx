@@ -23,16 +23,18 @@ const Signup = () => {
     }
 
     const handleChange = (e) => {
-        console.log('e', e)
-        const value = e.target.value
+       
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
         const name = e.target.name
-        console.log('value' + value, 'name' + name);
+        
 
         setFormData((prevState) => ({
             ...prevState,
             [name]: value
         }))
     }
+
+    console.log(formData);
 
     return (
         <>
@@ -98,7 +100,7 @@ const Signup = () => {
                                 required={true}
                                 value="man"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_identify === 'man'}
                             />
                             <label htmlFor="woman-gender_identify" className='signUpForm__label'>Gata</label>
                             <input className='signUpForm__input'
@@ -108,7 +110,7 @@ const Signup = () => {
                                 required={true}
                                 value="woman"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_identify === 'woman'}
                             />
                             <label htmlFor="other-gender_identify" className='signUpForm__label'>Otros</label>
                             <input className='signUpForm__input'
@@ -118,7 +120,7 @@ const Signup = () => {
                                 required={true}
                                 value="more"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_identify === 'other'}
                             />
                         </div>
                         </label> 
@@ -147,7 +149,7 @@ const Signup = () => {
                                 required={true}
                                 value="man"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_interest === 'man'}
                             />
                             <label htmlFor="woman-gender_interest" className='signUpForm__label'>Gata</label>
                             <input className='signUpForm__input'
@@ -157,7 +159,7 @@ const Signup = () => {
                                 required={true}
                                 value="woman"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_interest === 'woman'}
                             />
                             <label htmlFor="everyone-gender_interest" className='signUpForm__label'>Todos</label>
                             <input className='signUpForm__input'
@@ -167,7 +169,7 @@ const Signup = () => {
                                 required={true}
                                 value="everyone"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_interest === 'everyone'}
                             />  
                         </div>
                         </label> 
@@ -220,7 +222,7 @@ const Signup = () => {
                     <section className='signUpForm__section'>
                     <label htmlFor="url">Perfil
                     <div className='signUpForm__multipleInput'>
-                            <input className='signUpForm__input'
+                            <input className='signUpForm__input--profile'
                                 id="url"
                                 type="url"
                                 name="url" 
@@ -230,8 +232,8 @@ const Signup = () => {
                     </div>
                     </label>
 
-                    <div className='photo-container'>
-                        <img src={formData.url} alt="profile pic preview"/>
+                    <div className='signUpForm__photo-container'>
+                        <img src={formData.url} alt="profile pic preview" className='signUpForm__photo-container'/>
 
                     </div>
                     </section>                   
@@ -240,64 +242,6 @@ const Signup = () => {
                 </form> 
 
             </div>
-        {/* // <>Crear una cuenta
-        //     <form action="/signup" method="">
-        //         <label for="firstName">
-        //             <p>Nombre</p>
-        //             <input name="firstName" type="text"/>
-        //         </label>
-
-        //         <label for="lastName">
-        //             <p>Apellidos</p>
-        //             <input name="lastName" type="text"/>
-        //         </label>
-
-        //         <label for="birthday">
-        //             <p>Cumpleaños</p>
-        //             <input name="day" type="number"/> 
-        //             <input name="month" type="number"/> 
-        //             <input name="year" type="number"/> 
-        //         </label>  
-
-        //         <label for="gender">
-        //             <p>Gender</p>
-        //         </label>
-
-        //         <label for="animal">
-        //             <p>Animal</p>
-        //         </label>
-
-        //         <label for="showme">
-        //             <p>Interesado en</p>
-        //         </label>
-
-        //         <label for="aboutme">
-        //             <p>Sobre mí</p>
-        //             <textarea name="aboutme" type="text"/>
-        //         </label>
-
-        //         <label for="email">
-        //             <p>Email</p>
-        //             <input name="email" type="text"/>
-        //         </label>
-
-        //         <label for="password">
-        //             <p>Contraseña</p>
-        //             <input name="password" type="password"/>
-        //         </label>
-
-        //         <label for="password">
-        //             <p>Confirmar contraseña</p>
-        //             <input name="password" type="password"/>
-        //         </label>
-
-        //         <input type="submit" value="Enviar"/>
-
-
-
-        //     </form>
-        
-        // </> */}
         </>
     );
 }
