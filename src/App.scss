@@ -1,6 +1,11 @@
 @import "./pages/Home/home";
-@import "./pages/SignUp/signup";
-
+@import "./pages/SignUp/signUp";
+@import "./pages/Dashboard/dashboard";
+@import "./components/ChatContainer/chatContainer";
+@import "./components/ChatInput/chatInput";
+@import "./components/ChatHeader/chatHeader";
+@import "./components/ChatDisplay/chatDisplay";
+@import "./components/Chat/chat";
 
 .App {
   margin: 0;
