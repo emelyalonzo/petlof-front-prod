@@ -12,7 +12,7 @@ const Signup = () => {
         gender_identify:'',
         gender_interest: '',
         email: '',
-        password: '',
+        hashed_password: '',
         url: '',
         about: '',
         matches: []
@@ -210,7 +210,7 @@ const Signup = () => {
                                 name="password" 
                                 required={true}
                                 placeholder="Password"                   
-                                value={formData.password}
+                                value={formData.hashed_password}
                                 onChange={handleChange}  
                             />
                         </div>
