@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //VAR COLOR
 $base-color: black;
 $base-color-w: white;
@@ -88,3 +89,18 @@ html, body {
     } 
     
 }
+=======
+.overlay {
+    // TODO HOMEPAGE UI 
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0.65, 0),
+        rgba(0,0,0,100)
+    ),url('../../images/backgroundPhonePROVISIONAL.webp');
+}
+
+.home {
+    margin-top: 30vh;
+
+}
+>>>>>>> master
