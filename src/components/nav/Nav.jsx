@@ -11,11 +11,15 @@ const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
         <nav>
             {/* Homepage UI TODO */}
 
-            {!authToken && !minimal && <button
-                className="nav-button"
-                onClick={handleClick}
-                disabled={showModal}>
-            Log in</button>}
+            {!authToken && !minimal && (
+                <button
+                    className="nav-button"
+                    onClick={handleClick}
+                    disabled={showModal}
+                >
+                    Log in
+                </button>
+            )}
         </nav>
     );
 }
