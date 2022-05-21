@@ -1,6 +1,6 @@
 import React from "react";
-
-import Nav from "../../components/Nav/Nav";
+import Nav from "../../components/nav/Nav";
+import logo from './img/petLove-Logo.png';
 
 const Home = () => {
 
@@ -14,10 +14,19 @@ const Home = () => {
     <>
       <Nav />
       <div className="home">
-        <h1>Swipe Right</h1>
-        <button className="primary-button" onClick={handleClick}>
-          {authToken ? "Signout" : "Create Account"}
-        </button>
+        <div className="div-container--title">
+        <img className="img-logo" src={logo} alt="Logo" />
+        {/* <img src="./img/petLove-Logo.png'"/> */}
+          <h1 className="title-h1">Pet <span className="boldLove">Love</span><span className="copyRightSpan">®</span></h1>
+          <div className="div-container--buttons">
+          <button className="primary-button" onClick={handleClick}>
+            {authToken ? "Signout" : "Create Account"}
+          </button>
+          <button className="primary-button" onClick={handleClick}>
+            {authToken ? "Signout" : "Create Account"}
+          </button>
+          </div>
+        </div>
       </div>
     </>
   );

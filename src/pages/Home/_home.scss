@@ -1,0 +1,90 @@
+//VAR COLOR
+$base-color: black;
+$base-color-w: white;
+//VAR WEIGHT
+$base-weight-normal:300;
+$base-weight-think:100;
+$base-weight-bold:500;
+//VAR SIZE FONT
+$base-font-logo: 3.7rem;
+//VAR FONT
+$base-font: "Poppins", sans-serif;
+//VAR PADDING & MARGIN
+$none-pad: 0px;
+$none-margin: 0px;
+
+//MIXINGS
+@mixin flex-box-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@mixin flex-box-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 15px;
+}
+@mixin base-button {
+    box-shadow:inset 0px 0px 0px 0px #f5978e;
+	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+	background-color:#f24537;
+	border-radius:40px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:9px 76px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #810e05;
+    border: none;
+    
+}
+
+
+
+html, body {
+    background-image: url("./img/bk-pet-tinder.jpg");
+    @include flex-box-column();
+    height: 100%;
+    width: 100%;
+    margin: $none-margin;
+    padding: $none-pad;
+}
+.div-container--title {
+    @include flex-box-column();
+    .title-h1 {
+        margin: $none-margin;
+        color:$base-color-w;
+        font-family: $base-font;
+        text-align: center;
+        font-size: $base-font-logo;
+        font-weight: $base-weight-think;
+        .boldLove {
+        font-weight: $base-weight-bold;
+        }
+        .copyRightSpan {
+        font-weight: $base-weight-think;
+        }
+    }   
+    .div-container--buttons {
+        @include flex-box-wrap();
+        .primary-button {
+            @include base-button();
+        }
+        .primary-button:hover {
+            background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+            background-color:#c62d1f;
+        }
+        .primary-button:active {
+            position:relative;
+            top:1px;
+        }
+    } 
+    
+}
