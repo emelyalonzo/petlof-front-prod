@@ -1,5 +1,5 @@
 import React from "react";
-import logo from './img/petLove-Logo.png';
+import logo from '../../images/petLove-Logo.svg';
 import Authmodal from "../../components/AuthModal/AuthModal"
 import { useState } from "react";
 import Nav from '../../components/Nav/Nav';
