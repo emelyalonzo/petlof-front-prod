@@ -1,4 +1,6 @@
 import React from 'react';
+import whiteLogo from "../../images/petLove-Logo-full.svg";
+import colorLogo from "../../images/petLove-Logo-full.svg";
 
 const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
 
@@ -8,9 +10,15 @@ const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
     }
 
     return (
-        <nav>
+        <nav className='isotipo'>
             {/* Homepage UI TODO */}
-
+        <div className="logo-container">
+        <img
+          className="logo-isotipo"
+          src={minimal ? colorLogo : whiteLogo}
+          alt="logo"
+        />
+      </div>
             {!authToken && !minimal && (
                 <button
                     className="nav-button"
