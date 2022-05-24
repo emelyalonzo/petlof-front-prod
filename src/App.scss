@@ -1,4 +1,5 @@
 @import "./pages/Home/home";
+@import "./pages/About/about";
 @import "./pages/SignUp/signUp";
 @import "./pages/Dashboard/dashboard";
 @import "./components/ChatContainer/chatContainer";
@@ -6,6 +7,10 @@
 @import "./components/ChatHeader/chatHeader";
 @import "./components/ChatDisplay/chatDisplay";
 @import "./components/Chat/chat";
+
+body {
+  margin: 0;
+}
 
 .App {
   margin: 0;

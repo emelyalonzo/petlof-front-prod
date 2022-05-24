@@ -18,6 +18,7 @@ const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
           src={minimal ? colorLogo : whiteLogo}
           alt="logo"
         />
+        {/* //TODO: Añadir NavLink para la pagina de about us */}
       </div>
             {!authToken && !minimal && (
                 <button
