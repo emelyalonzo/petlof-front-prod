@@ -2,7 +2,7 @@ import React from "react";
 import logo from '../../images/petLove-Logo.svg';
 import Authmodal from "../../components/AuthModal/AuthModal"
 import { useState } from "react";
-import Nav from '../../components/nav/Nav';
+import Nav from '../../components/Nav/Nav';
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
