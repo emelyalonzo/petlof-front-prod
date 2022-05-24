@@ -1,0 +1,56 @@
+//VAR COLOR
+$base-color: black;
+$base-color-w: white;
+//VAR WEIGHT
+$base-weight-normal:300;
+$base-weight-think:100;
+$base-weight-bold:500;
+//VAR SIZE FONT
+$base-font-logo: 3.7rem;
+//VAR FONT
+$base-font: "Poppins", sans-serif;
+//VAR PADDING & MARGIN
+$none-pad: 0px;
+$none-margin: 0px;
+//BORDER-RADIUS
+$bor-10: 10px;
+//MIXINGS
+@mixin flex-box-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin flex-box-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 15px;
+}
+@mixin base-button {
+box-shadow:inset 0px 0px 0px 0px #f5978e;
+background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+background-color:#f24537;
+border-radius:40px;
+display:inline-block;
+cursor:pointer;
+color:#ffffff;
+font-family:Arial;
+font-size:17px;
+font-weight:bold;
+padding:9px 76px;
+text-decoration:none;
+text-shadow:0px 0px 0px #810e05;
+margin: 10px 0px 0px 0px;
+border: none;
+}
+
+@mixin base-input {
+    border-radius: 50px;
+    border: 1px solid #0000004a;
+    font-size: 14px;
+    padding: 10px 10px;
+    margin: 5px 0px;
+}

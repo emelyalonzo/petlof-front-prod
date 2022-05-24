@@ -1,3 +1,4 @@
+@import "./common/vars.scss";
 @import "./pages/Home/home";
 @import "./pages/About/about";
 @import "./pages/SignUp/signUp";
@@ -7,6 +8,9 @@
 @import "./components/ChatHeader/chatHeader";
 @import "./components/ChatDisplay/chatDisplay";
 @import "./components/Chat/chat";
+@import "./components/AuthModal/authModal";
+@import "./components/Nav/Nav";
+// get our fontawesome imports
 
 body {
   margin: 0;
