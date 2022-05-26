@@ -1,7 +1,9 @@
-import React, { useState } from "react";
 import Nav from "../../components/Nav/Nav";
+import React, { useState } from "react";
+import { useCookies } from 'react-cookie'
 
 const Signup = () => {
+  const [cookes, setCokkie, removeCookie] = useCookies(['user'])
   const [formData, setFormData] = useState({
     user_id: "",
     first_name: "",
