@@ -1,5 +1,5 @@
 body {
-    background-image: url("./img/bk-pet-tinder.jpg");
+    background-image: url("./img/bk-pet-tinder.jpg")!important;
 }
 .home {
     @include flex-box-column();

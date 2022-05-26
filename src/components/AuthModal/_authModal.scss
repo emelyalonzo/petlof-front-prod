@@ -1,30 +1,20 @@
 .auth-modal {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 360px;
-    height: 600px;
-    background-color: $base-color-w;
-    font-family: $base-font;
-    border-radius: $bor-10;
-    padding: 40px;
-    box-shadow:rgb(48 48 48 / 27%) 0px 7px 60px 0px;
+    @include style-modal();
     .secondary-button {
         @include base-button();
         width: 100%;
-        &:hover {
-            background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
-            background-color:#c62d1f;
-            border: none;
-            color: $base-color-w;
-        }
-        &:active {
-            position:relative;
-            top:1px;
-        }
+    }
+    .h2--howWorks {
+        text-align: center;
+        font-style: initial;
+        font-weight: 700;
+    }
+    .p--howWorks {
+        text-align: center;
+        font-size: $base-font-S;
+    }
+    .btn-howWorks {
+        @include line-button();
     }
     .close-icon {
         float: right;
