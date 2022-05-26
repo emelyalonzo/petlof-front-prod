@@ -12,8 +12,9 @@
 @import "./components/Nav/Nav";
 // get our fontawesome imports
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
 }
 
 .App {
