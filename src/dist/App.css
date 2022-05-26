@@ -4,25 +4,15 @@ body {
 }
 
 .home {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   margin: 0px;
   padding: 0px;
 }
-
 .home img.img-logo {
   max-width: 180px;
   padding: 0px;
@@ -30,21 +20,11 @@ body {
 }
 
 .div-container--title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 .div-container--title .title-h1 {
   margin: 0px;
   color: white;
@@ -53,36 +33,22 @@ body {
   font-size: 3.7rem;
   font-weight: 100;
 }
-
 .div-container--title .title-h1 .boldLove {
   font-weight: 500;
 }
-
 .div-container--title .title-h1 .copyRightSpan {
   font-weight: 100;
 }
-
 .div-container--title .div-container--buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   row-gap: 10px;
-  -webkit-column-gap: 15px;
-          column-gap: 15px;
+  column-gap: 15px;
 }
-
 .div-container--title .div-container--buttons .primary-button {
-  -webkit-box-shadow: inset 0px 0px 0px 0px #f5978e;
-          box-shadow: inset 0px 0px 0px 0px #f5978e;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #f24537), to(#c62d1f));
+  box-shadow: inset 0px 0px 0px 0px #f5978e;
   background: linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
   background-color: #f24537;
   border-radius: 40px;
@@ -98,13 +64,10 @@ body {
   margin: 10px 0px 0px 0px;
   border: none;
 }
-
 .div-container--title .div-container--buttons .primary-button:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #c62d1f), to(#f24537));
   background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
   background-color: #c62d1f;
 }
-
 .div-container--title .div-container--buttons .primary-button:active {
   position: relative;
   top: 1px;
@@ -115,23 +78,15 @@ body {
   width: 100%;
   height: 30vh;
 }
-
 .titleAbout h2 {
   font-size: 2rem;
   color: darkgray;
 }
 
 .signUp {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h2 {
@@ -139,24 +94,15 @@ h2 {
 }
 
 .signUpForm {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 .signUpForm__section {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 20px;
   margin: 50px 70px;
   text-align: start;
 }
-
 .signUpForm__input {
   width: 239px;
   padding: 15px 30px;
@@ -166,7 +112,6 @@ h2 {
   border-radius: 10px;
   margin-right: 10px;
 }
-
 .signUpForm__input--profile {
   width: 300px;
   padding: 15px 30px;
@@ -176,69 +121,54 @@ h2 {
   border-radius: 10px;
   margin-right: 10px;
 }
-
 .signUpForm__multipleInput {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
-
 .signUpForm__label {
   padding: 10px;
   border: solid 2px #909090;
   border-radius: 10px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   margin: 10px 10px 10px 0;
 }
-
 .signUpForm__photo-container {
   width: 364px;
   height: 570px;
 }
 
-input[type="radio"] {
+input[type=radio] {
   display: none;
 }
 
-input[type="number"] {
+input[type=number] {
   width: 30px;
 }
 
-input[type="submit"] {
+input[type=submit] {
   width: 304px;
 }
 
-input[type="submit"]:hover {
+input[type=submit]:hover {
   background-color: #ebebeb;
 }
 
-input[type="submit"]:active {
+input[type=submit]:active {
   background-color: #e2739b;
 }
 
 .dashboard {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .chatContainer {
   background-color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px;
-          box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px;
   width: 30%;
   text-align: left;
   z-index: 1;
 }
-
 .chatContainer__btn--option {
   border: none;
   background-color: white;
@@ -247,47 +177,29 @@ input[type="submit"]:active {
   margin: 2px;
   padding: 10px;
 }
-
 .chatContainer__btn--option:disabled {
   border-bottom: solid 4px #bbbbbb;
 }
 
 .chatInput {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 20px;
 }
 
 .chatHeader {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   background: linear-gradient(45deg, #fe3072, #e15940);
   height: 100px;
 }
-
 .chatHeader__profile {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 20px;
   color: white;
 }
-
 .chatHeader__img {
   width: 30px;
   height: 30px;
@@ -295,7 +207,6 @@ input[type="submit"]:active {
   overflow: hidden;
   margin: 10px;
 }
-
 .chatHeader__img--photo {
   width: 100%;
 }
@@ -320,11 +231,8 @@ input[type="submit"]:active {
   border-radius: 10px;
   padding: 40px;
 }
-
 .auth-modal .secondary-button {
-  -webkit-box-shadow: inset 0px 0px 0px 0px #f5978e;
-          box-shadow: inset 0px 0px 0px 0px #f5978e;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #f24537), to(#c62d1f));
+  box-shadow: inset 0px 0px 0px 0px #f5978e;
   background: linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
   background-color: #f24537;
   border-radius: 40px;
@@ -341,39 +249,27 @@ input[type="submit"]:active {
   border: none;
   width: 100%;
 }
-
 .auth-modal .secondary-button:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #c62d1f), to(#f24537));
   background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
   background-color: #c62d1f;
   border: none;
   color: white;
 }
-
 .auth-modal .secondary-button:active {
   position: relative;
   top: 1px;
 }
-
 .auth-modal .close-icon {
   float: right;
 }
-
 .auth-modal h2 {
   text-align: left;
 }
-
 .auth-modal form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
-.auth-modal input[type="password"], .auth-modal input[type="email"] {
+.auth-modal input[type=password], .auth-modal input[type=email] {
   border-radius: 50px;
   border: 1px solid #0000004a;
   font-size: 14px;
@@ -387,26 +283,16 @@ nav .nav-button:disabled {
 }
 
 nav.isotipo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 0px 10px;
 }
-
 nav.isotipo img.logo-isotipo {
   width: 219.5px;
 }
-
 nav.isotipo .nav-button {
-  -webkit-box-shadow: inset 0px 0px 0px 0px #f5978e;
-          box-shadow: inset 0px 0px 0px 0px #f5978e;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #f24537), to(#c62d1f));
+  box-shadow: inset 0px 0px 0px 0px #f5978e;
   background: linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
   background-color: #f24537;
   border-radius: 40px;
@@ -425,7 +311,6 @@ nav.isotipo .nav-button {
   height: 33px;
   line-height: 0px;
 }
-
 nav.isotipo button.nav-button {
   margin: 0px !important;
 }
@@ -465,4 +350,3 @@ h2 {
   font-size: 90px;
   color: white;
 }
-/*# sourceMappingURL=App.css.map */

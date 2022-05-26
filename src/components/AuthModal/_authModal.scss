@@ -7,22 +7,36 @@
     margin-right: auto;
     max-width: 360px;
     height: 600px;
-    background-color: white;
-    border: radius 10px;
+    background-color: $base-color-w;
+    font-family: $base-font;
+    border-radius: $bor-10;
     padding: 40px;
-
+    box-shadow:rgb(48 48 48 / 27%) 0px 7px 60px 0px;
+    .secondary-button {
+        @include base-button();
+        width: 100%;
+        &:hover {
+            background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+            background-color:#c62d1f;
+            border: none;
+            color: $base-color-w;
+        }
+        &:active {
+            position:relative;
+            top:1px;
+        }
+    }
     .close-icon {
         float: right;
     }
-
+    h2 {
+        text-align: left;
+    }
     form {
         display: flex;
         flex-direction: column;
     }
-
     input[type="password"], input[type="email"]{
-        padding: 8px;
-        margin: 8px;
-        font-size:17px;
+        @include base-input();
     }
 }
