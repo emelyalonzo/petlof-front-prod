@@ -4,8 +4,8 @@ import ChatHeader from '../ChatHeader/ChatHeader';
 import MatchesDisplay from '../MatchesDisplay/MatchesDisplay';
 import ChatDisplay from '../ChatDisplay/ChatDisplay';
 
+const ChatContainer = () => {
 
-export default function ChatContainer() {
   return (
     <div className="chatContainer">
       <ChatHeader/> 
@@ -22,3 +22,5 @@ export default function ChatContainer() {
     </div>
   )
 }
+
+export default ChatContainer;
