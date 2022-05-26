@@ -1,12 +1,16 @@
 //VAR COLOR
 $base-color: black;
 $base-color-w: white;
+$base-color-red:#f24537;
 //VAR WEIGHT
 $base-weight-normal:300;
 $base-weight-think:100;
-$base-weight-bold:500;
+$base-weight-bold:600;
 //VAR SIZE FONT
 $base-font-logo: 3.7rem;
+$base-font-S: 0.9rem;
+$base-font-M: 1rem;
+$base-font-L: 0.9rem;
 //VAR FONT
 $base-font: "Poppins", sans-serif;
 //VAR PADDING & MARGIN
@@ -14,6 +18,7 @@ $none-pad: 0px;
 $none-margin: 0px;
 //BORDER-RADIUS
 $bor-10: 10px;
+$bor-40: 40px;
 //MIXINGS
 @mixin flex-box-column {
   display: flex;
@@ -29,24 +34,53 @@ $bor-10: 10px;
   row-gap: 10px;
   column-gap: 15px;
 }
+//BUTTON GENERAL STYLE
 @mixin base-button {
-box-shadow:inset 0px 0px 0px 0px #f5978e;
-background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
-background-color:#f24537;
-border-radius:40px;
+background-color:$base-color-red;
+border-radius:$bor-40;
+color:$base-color-w;
+font-size:$base-font-M;
+font-weight:$base-weight-bold;
+font-family: $base-font;
 display:inline-block;
 cursor:pointer;
-color:#ffffff;
-font-family:Arial;
-font-size:17px;
-font-weight:bold;
 padding:9px 76px;
 text-decoration:none;
 text-shadow:0px 0px 0px #810e05;
 margin: 10px 0px 0px 0px;
 border: none;
+&:hover {
+  background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+  background-color:#c62d1f;
+  border: none;
+  color: $base-color-w;
 }
-
+&:active {
+  position:relative;
+  top:1px;
+}
+}
+//BUTTON LINE STYLE
+@mixin line-button {
+  border-radius: $bor-40;
+  color: $base-color;
+  font-size: $base-font-M;
+  background: $base-color-w;
+  border: 2px solid black;
+  text-align: center;
+  font-weight: $base-weight-bold;
+  cursor:pointer;
+  &:hover {
+    background: linear-gradient(to bottom, #e6e6e6 5%, #e9e9e9 100%);
+    background-color: #cbcbcb;
+    cursor:pointer;
+  }
+  &:active {
+    position:relative;
+    top:1px;
+  }
+  }
+//INPUT GENERAL STYLE
 @mixin base-input {
     border-radius: 50px;
     border: 1px solid #0000004a;
@@ -54,3 +88,19 @@ border: none;
     padding: 10px 10px;
     margin: 5px 0px;
 }
+//MODAL STRUCTURE
+@mixin style-modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 360px;
+    height: 600px;
+    background-color: $base-color-w;
+    font-family: $base-font;
+    border-radius: $bor-10;
+    padding: 40px;
+    box-shadow:rgb(48 48 48 / 27%) 0px 7px 60px 0px;
+  }

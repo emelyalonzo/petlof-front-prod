@@ -72,6 +72,10 @@ const Authmodal = ({setShowModal, isSignUp }) => {
                 <p>{error}</p>
 
             </form>
+            <hr/>
+            <h2 className='h2--howWorks'>HOW IT WORK´S</h2>
+            <p className='p--howWorks'>Using the platform to find your feline's love is very simple, use the guide to solve possible doubts. You will also find our resumes, they are humble but sexy.</p>
+            <div className="btn-howWorks">ABOUT US</div>
         </div>
     );
 }
