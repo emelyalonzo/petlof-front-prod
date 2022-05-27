@@ -43,31 +43,6 @@ const Dashboard = () => {
 
   console.log('user', user);
 
-  const character = [
-    {
-      name: 'Richard Hendricks',
-      url: 'https://imgur.com/QsUowEE.jpg'
-    },
-    {
-      name: 'Erlich Bachman',
-      url: 'https://imgur.com/3JlDcRY.jpg'
-    },
-    {
-      name: 'Monica Hall',
-      url: 'https://imgur.com/jMIdy9q.jpg'
-    },
-    {
-      name: 'Jared Dunn',
-      url: 'https://imgur.com/N1WkP.jpg'
-    },
-    {
-      name: 'Dinesh Chugtai',
-      url: 'https://imgur.com/FCthgih.jpg'
-    }
-  ]
-
-  
-
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
