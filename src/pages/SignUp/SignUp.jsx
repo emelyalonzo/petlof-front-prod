@@ -1,27 +1,42 @@
 import Nav from "../../components/Nav/Nav";
 import React, { useState } from "react";
-// import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
+//TODO: Poner el codigo en estilos o react para que el input de gender_identity y gender_interest se pinten como seleccionados en el signup
+
+
 
 const Signup = () => {
-  // const [cookes, setCokkie, removeCookie] = useCookies(['user'])
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
   const [formData, setFormData] = useState({
-    user_id: "",
+    user_id: cookies.UserId,
     first_name: "",
     dob_day: "",
     dob_month: "",
     dob_year: "",
-    show_me: "",
-    gender_identify: "",
+    gender_identity: "",
     gender_interest: "",
-    email: "",
-    hashed_password: "",
-    url: "",
+    imageURL: "",
     about: "",
     matches: [],
   });
 
-  const handleSubmit = () => {
-    console.log("submitted");
+  let navigate = useNavigate()
+
+   
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axios.put('http://localhost:3001/users/edit', { formData })
+      if (response.status === 200) navigate('/dashboard');
+    } catch (err) {
+      console.log(err);
+    }
+
   };
 
   const handleChange = (e) => {
@@ -97,56 +112,56 @@ const Signup = () => {
               </div>
             </label>
 
-            <label htmlFor="gender_identify">
+            <label htmlFor="gender_identity">
               Género
               <div className="signUpForm__multipleInput">
                 <label
-                  htmlFor="man-gender_identify"
+                  htmlFor="man-gender_identity"
                   className="signUpForm__label"
                 >
                   Gato
                 </label>
                 <input
                   className="signUpForm__input"
-                  id="man-gender_identify"
+                  id="man-gender_identity"
                   type="radio"
-                  name="gender_identify"
+                  name="gender_identity"
                   required={true}
-                  value="man"
+                  value="male"
                   onChange={handleChange}
-                  checked={formData.gender_identify === "man"}
+                  checked={formData.gender_identity === "male"}
                 />
                 <label
-                  htmlFor="woman-gender_identify"
+                  htmlFor="woman-gender_identity"
                   className="signUpForm__label"
                 >
                   Gata
                 </label>
                 <input
                   className="signUpForm__input"
-                  id="woman-gender_identify"
+                  id="woman-gender_identity"
                   type="radio"
-                  name="gender_identify"
+                  name="gender_identity"
                   required={true}
-                  value="woman"
+                  value="female"
                   onChange={handleChange}
-                  checked={formData.gender_identify === "woman"}
+                  checked={formData.gender_identity === "female"}
                 />
                 <label
-                  htmlFor="other-gender_identify"
+                  htmlFor="other-gender_identity"
                   className="signUpForm__label"
                 >
                   Otros
                 </label>
                 <input
                   className="signUpForm__input"
-                  id="more-gender_identify"
+                  id="more-gender_identity"
                   type="radio"
-                  name="gender_identify"
+                  name="gender_identity"
                   required={true}
-                  value="more"
+                  value="other"
                   onChange={handleChange}
-                  checked={formData.gender_identify === "other"}
+                  checked={formData.gender_identity === "other"}
                 />
               </div>
             </label>
@@ -166,9 +181,9 @@ const Signup = () => {
                   type="radio"
                   name="gender_interest"
                   required={true}
-                  value="man"
+                  value="male"
                   onChange={handleChange}
-                  checked={formData.gender_interest === "man"}
+                  checked={formData.gender_interest === "male"}
                 />
                 <label
                   htmlFor="woman-gender_interest"
@@ -182,9 +197,9 @@ const Signup = () => {
                   type="radio"
                   name="gender_interest"
                   required={true}
-                  value="woman"
+                  value="female"
                   onChange={handleChange}
-                  checked={formData.gender_interest === "woman"}
+                  checked={formData.gender_interest === "female"}
                 />
                 <label
                   htmlFor="everyone-gender_interest"
@@ -221,50 +236,18 @@ const Signup = () => {
               </div>
             </label>
 
-            <label htmlFor="email">
-              Email
-              <div className="signUpForm__multipleInput">
-                <input
-                  className="signUpForm__input"
-                  id="email"
-                  type="text"
-                  name="email"
-                  required={true}
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-            </label>
-
-            <label htmlFor="password">
-              Password
-              <div className="signUpForm__multipleInput">
-                <input
-                  className="signUpForm__input"
-                  id="password"
-                  type="password"
-                  name="password"
-                  required={true}
-                  placeholder="Password"
-                  value={formData.hashed_password}
-                  onChange={handleChange}
-                />
-              </div>
-            </label>
-
             <input className="signUpForm__input" type="submit" value="Enviar" />
           </section>
 
           <section className="signUpForm__section">
-            <label htmlFor="url">
-              Perfil
+            <label htmlFor="imageURL">
+              Profile Image Url
               <div className="signUpForm__multipleInput">
                 <input
                   className="signUpForm__input--profile"
-                  id="url"
+                  id="imageURL"
                   type="url"
-                  name="url"
+                  name="imageURL"
                   required={true}
                   onChange={handleChange}
                 />
@@ -272,14 +255,14 @@ const Signup = () => {
             </label>
 
             <div className="signUpForm__photo-container">
-              <img
-                src={formData.url}
+              {formData.imageURL && <img 
+                src={formData.imageURL}
                 alt="profile pic preview"
                 className="signUpForm__photo-container"
-              />
+              />}
             </div>
           </section>
-        </form>
+        </form> 
       </div>
     </>
   );
