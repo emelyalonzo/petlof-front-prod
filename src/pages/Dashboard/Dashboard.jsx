@@ -7,7 +7,10 @@ import axios from "axios";
 const Dashboard = () => {
 
   const [user, setUser] = useState(null);
-  const [cookies, setCookie, removeCookie] = useState(['null']);
+  const [genderedUsers, setGenderedUsers] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [lastDirection, setLastDirection] = useState();
+  
 
   const userId = cookies.UserId;
 
@@ -21,10 +24,22 @@ const Dashboard = () => {
       console.log(err);
     }
   }
+  
+  const getGenderedUser = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/users/gendered-users', {
+        params: {gender: user?.gender_interest}
+      })
+      setGenderedUsers(response.data)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     getUser()
-  }, [user]);
+    getGenderedUser()
+  }, [user, getGenderedUser]);
 
   console.log('user', user);
 
@@ -51,7 +66,7 @@ const Dashboard = () => {
     }
   ]
 
-  const [lastDirection, setLastDirection] = useState()
+  
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)

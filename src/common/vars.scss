@@ -80,6 +80,20 @@ border: none;
     top:1px;
   }
   }
+
+  @mixin seudo-nav {
+    margin: $none-margin;
+    color: $base-color-w;
+    font-family: $base-font;
+    font-size: $base-font-M;
+    font-weight: $base-weight-normal;
+    display: flex;
+    gap: 25px;
+    justify-content: END;
+    align-items: END;
+    width: 60%;
+    margin-right: -75.4px;
+  }
 //INPUT GENERAL STYLE
 @mixin base-input {
     border-radius: 50px;
