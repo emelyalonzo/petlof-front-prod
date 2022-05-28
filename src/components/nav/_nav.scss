@@ -11,7 +11,7 @@ nav.isotipo {
         width: 219.5px;
     }
     .nav-button {
-        @include base-button();
+        @include base-button ();
         padding: 9px 60px;
         height: 33px;
         line-height: 0px;
@@ -20,4 +20,9 @@ nav.isotipo {
         margin: 0px!important;
     }
     
+    
 }
+.container-nav {
+    @include seudo-nav();
+}
+
