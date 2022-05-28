@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
-// import { useCookies } from 'react-cookie';
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
 
   const [user, setUser] = useState(null);
   const [genderedUsers, setGenderedUsers] = useState(null);
-  // const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [lastDirection, setLastDirection] = useState();
-  
-  //?Está por defecto mientras ponemos las cookies a funcionar correctamente (probablemente con local storage)
-  const userId = "98a74188-83b8-4d08-8051-d0e532344549"
-  console.log("el componente se ha iniciado", userId)
+
+
+  const navigate = useNavigate();
 
   const getUser = async () => {
     try {
+      const userId = localStorage.getItem("UserId");
+      console.log("userId", userId);
       console.log("dentro de getUser en el useEffect")
       const {data: {data}} = await axios.get('http://localhost:3001/users', {
         params: {id: userId}
@@ -27,7 +27,6 @@ const Dashboard = () => {
       console.log(err);
     }
   }
-  //TODO: llamar al custom hook para el getUser y el getGenderedUser (también los matches)
 
   const getGenderedUser = async (user) => {
     try {
@@ -65,12 +64,20 @@ const Dashboard = () => {
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
   }
+
+  const logout = () => {
+    localStorage.clear()
+    setUser(null);
+    navigate("/")
+  };
+
   if (!user || !genderedUsers) {
     return "no existe el usuario"
   }
   return (
     <div className="dashboard">
       <ChatContainer />
+      <button onClick={logout}>LOGOUT</button>
       <div className="swiper-container">
         <div className="card-container">
 
@@ -84,7 +91,7 @@ const Dashboard = () => {
               onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}
             >
               <div
-                style={{ backgroundImage: "url(" + genderedUser.url + ")" }}
+                style={{ backgroundImage: "url(" + genderedUser.imageURL + ")" }}
                 className="card"
               >
                 <h3>{genderedUser.first_name}</h3>

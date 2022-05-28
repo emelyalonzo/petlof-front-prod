@@ -38,8 +38,17 @@ const Authmodal = ({setShowModal, isSignUp }) => {
             // setCookie('AuthToken', response.data.token)
             // setCookie('UserId', response.data.userId)
 
-            if (response.status === 200 && isSignUp) navigate('/signup');
-            if (response.status === 200 && !isSignUp) navigate('/dashboard');
+            if (response.status === 200 && isSignUp) {
+                localStorage.setItem('AuthToken', response.data.token);
+                localStorage.setItem('UserId', response.data.userId);
+                navigate('/signup')
+                
+            };
+            if (response.status === 200 && !isSignUp) {
+                localStorage.setItem('AuthToken', response.data.token);
+                localStorage.setItem('UserId', response.data.userId);
+                navigate('/dashboard')
+            };
         } catch (error) {
             console.log(error);
         }
