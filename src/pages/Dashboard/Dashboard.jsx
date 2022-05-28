@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useCookies } from 'react-cookie';
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
@@ -13,21 +13,24 @@ const Dashboard = () => {
   
 
   const userId = "98a74188-83b8-4d08-8051-d0e532344549"
-  console.log(userId)
+  console.log("el componente se ha iniciado", userId)
 
+  const getUser = async () => {
+    try {
+      console.log("dentro de getUser en el useEffect")
+      const {data: {data}} = await axios.get('http://localhost:3001/users', {
+        params: {id: userId}
+      })
+      console.log("27",data)
+      setUser(data.user)
+    } catch (err) {
+      console.log(err);
+    }
+  }
   
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/users', {
-          params: {id: userId}
-        })
-        console.log(response)
-        setUser(response.data.user)
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    console.log("use effect de user antes de getUser")
+    
     getUser()
     console.log("update user")
   }, []);
@@ -35,21 +38,21 @@ const Dashboard = () => {
 
 
   useEffect(() => {
-    if (user) {
+    if (user && !genderedUsers) {
       const getGenderedUser = async (user) => {
         try {
-          const response = await axios.get('http://localhost:3001/gender', {
+          const { data: {data} } = await axios.get('http://localhost:3001/gender', {
             params: {gender_interest: user?.gender_interest}
           })
-          console.log(response);
-          setGenderedUsers(response.data)
+          console.log(data);
+          setGenderedUsers(data.users)
         } catch (err) {
           console.log(err);
         }
       }
       getGenderedUser(user)
     }
-  }, [user]);
+  }, [user, genderedUsers]);
 
  
 
@@ -61,7 +64,9 @@ const Dashboard = () => {
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
   }
-
+  if (!user || !genderedUsers) {
+    return "no existe el usuario"
+  }
   return (
     <div className="dashboard">
       <ChatContainer />
