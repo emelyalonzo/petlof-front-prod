@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
-import { useCookies } from 'react-cookie';
+import { useState, useEffect } from "react";
+// import { useCookies } from 'react-cookie';
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import axios from "axios";
@@ -8,10 +8,10 @@ const Dashboard = () => {
 
   const [user, setUser] = useState(null);
   const [genderedUsers, setGenderedUsers] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  // const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [lastDirection, setLastDirection] = useState();
   
-
+  //?Está por defecto mientras ponemos las cookies a funcionar correctamente (probablemente con local storage)
   const userId = "98a74188-83b8-4d08-8051-d0e532344549"
   console.log("el componente se ha iniciado", userId)
 
@@ -27,10 +27,22 @@ const Dashboard = () => {
       console.log(err);
     }
   }
+  //TODO: llamar al custom hook para el getUser y el getGenderedUser (también los matches)
+
+  const getGenderedUser = async (user) => {
+    try {
+      const { data: {data} } = await axios.get('http://localhost:3001/gender', {
+        params: {gender_interest: user?.gender_interest}
+      })
+      console.log(data);
+      setGenderedUsers(data.users)
+    } catch (err) {
+      console.log(err);
+    }
+  }
   
   useEffect(() => {
     console.log("use effect de user antes de getUser")
-    
     getUser()
     console.log("update user")
   }, []);
@@ -39,17 +51,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user && !genderedUsers) {
-      const getGenderedUser = async (user) => {
-        try {
-          const { data: {data} } = await axios.get('http://localhost:3001/gender', {
-            params: {gender_interest: user?.gender_interest}
-          })
-          console.log(data);
-          setGenderedUsers(data.users)
-        } catch (err) {
-          console.log(err);
-        }
-      }
       getGenderedUser(user)
     }
   }, [user, genderedUsers]);
