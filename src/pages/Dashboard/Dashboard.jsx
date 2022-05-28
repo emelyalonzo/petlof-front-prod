@@ -12,62 +12,46 @@ const Dashboard = () => {
   const [lastDirection, setLastDirection] = useState();
   
 
-  const userId = cookies.UserId;
+  const userId = "98a74188-83b8-4d08-8051-d0e532344549"
+  console.log(userId)
 
-  const getUser = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/users', {
-        params: {userId}
-      })
-      setUser(response.data)
-    } catch (err) {
-      console.log(err);
-    }
-  }
   
-  const getGenderedUser = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/users/gendered-users', {
-        params: {gender: user?.gender_interest}
-      })
-      setGenderedUsers(response.data)
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/users', {
+          params: {id: userId}
+        })
+        console.log(response)
+        setUser(response.data.user)
+      } catch (err) {
+        console.log(err);
+      }
+    }
     getUser()
-    getGenderedUser()
-  }, [user, getGenderedUser]);
-
+    console.log("update user")
+  }, []);
   console.log('user', user);
 
-//! out with character
-  const character = [
-    {
-      name: 'Richard Hendricks',
-      url: 'https://imgur.com/QsUowEE.jpg'
-    },
-    {
-      name: 'Erlich Bachman',
-      url: 'https://imgur.com/3JlDcRY.jpg'
-    },
-    {
-      name: 'Monica Hall',
-      url: 'https://imgur.com/jMIdy9q.jpg'
-    },
-    {
-      name: 'Jared Dunn',
-      url: 'https://imgur.com/N1WkP.jpg'
-    },
-    {
-      name: 'Dinesh Chugtai',
-      url: 'https://imgur.com/FCthgih.jpg'
-    }
-  ]
 
-  
+  useEffect(() => {
+    if (user) {
+      const getGenderedUser = async (user) => {
+        try {
+          const response = await axios.get('http://localhost:3001/gender', {
+            params: {gender_interest: user?.gender_interest}
+          })
+          console.log(response);
+          setGenderedUsers(response.data)
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      getGenderedUser(user)
+    }
+  }, [user]);
+
+ 
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
@@ -85,8 +69,8 @@ const Dashboard = () => {
         <div className="card-container">
 
 
-//! genderedUser is correct
-          {character.map((genderedUser) => (
+
+          {genderedUsers.map((genderedUser) => (
             <TinderCard
               className="swipe"
               key={genderedUser.user_id}
