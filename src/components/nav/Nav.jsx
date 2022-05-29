@@ -23,9 +23,8 @@ const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
                 {/* //TODO: Añadir NavLink para la pagina de about us */}
             </div>
             <div className='container-nav'>
-            <h2 className="asg">asgffs</h2>
-            <h2 className="asg">asgffs</h2>
-            <h2 className="asg">asgffs</h2>
+            <h2 className="asg">Home</h2>
+            <h2 className="asg">About</h2>
             </div>
             {!authToken && !minimal && (
                 <button
