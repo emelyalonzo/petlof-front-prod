@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
 
@@ -10,18 +10,15 @@ const Dashboard = () => {
   const [genderedUsers, setGenderedUsers] = useState(null);
   const [lastDirection, setLastDirection] = useState();
 
-
-  const navigate = useNavigate();
+  const userId = localStorage.getItem("UserId");
+  const Id = localStorage.getItem("Id");
+  // const navigate = useNavigate();
 
   const getUser = async () => {
     try {
-      const userId = localStorage.getItem("UserId");
-      console.log("userId", userId);
-      console.log("dentro de getUser en el useEffect")
       const {data: {data}} = await axios.get('http://localhost:3001/users', {
         params: {id: userId}
       })
-      console.log("27",data)
       setUser(data.user)
     } catch (err) {
       console.log(err);
@@ -33,7 +30,6 @@ const Dashboard = () => {
       const { data: {data} } = await axios.get('http://localhost:3001/gender', {
         params: {gender_interest: user?.gender_interest}
       })
-      console.log(data);
       setGenderedUsers(data.users)
     } catch (err) {
       console.log(err);
@@ -41,12 +37,8 @@ const Dashboard = () => {
   }
   
   useEffect(() => {
-    console.log("use effect de user antes de getUser")
     getUser()
-    console.log("update user")
   }, []);
-  console.log('user', user);
-
 
   useEffect(() => {
     if (user && !genderedUsers) {
@@ -54,10 +46,22 @@ const Dashboard = () => {
     }
   }, [user, genderedUsers]);
 
- 
+  const updatedMatches = async (matchedUserId) => {
+    try {
+      await axios.put('http://localhost:3001/match/addmatch', {
+        userId, 
+        matchedUserId
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-  const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete)
+  const swiped = (direction, swipedUserId) => {
+
+    if (direction === 'right') {
+      updatedMatches(swipedUserId)
+    }
     setLastDirection(direction)
   }
 
@@ -65,25 +69,42 @@ const Dashboard = () => {
     console.log(name + ' left the screen!')
   }
 
-  const logout = () => {
-    localStorage.clear()
-    setUser(null);
-    navigate("/")
-  };
+  //* La plataforma no nos debe sugerir el usuario registrado ni tampoco los usuarios que ya son match, por lo que los ids de estos usuarios 
+  //* incluyendo el propio estarán en un array de strings llamado matchedUserIds.
+  //* Para obtener el array de strings se hace un map de los matches del usuario registrado, y por cada posicion de ese array 
+  //* matches el objeto de usuario que estaba se transforma SOLO en el id del propio usuario. 
+  //* Ademas se hace concat del id del usuario registrado para que éste tampoco aparezca en las sugerencias de match.
+
+  const matchedUserIds = user?.matches.map((id) => id).concat(Id);
+
+  console.log("matchedUserIds",matchedUserIds)
+  //* Ahora hay que descartar los usuarios cuyo id se encuentre en el array de matchedUserIds, es decir, o bien sea el id del usuario loggeado
+  //* o bien sea el id de alguno de los matches del usuario loggeado.
+
+  console.log("genderedUsers", genderedUsers)
+  const filteredGenderedUsers = genderedUsers?.filter(
+    genderedUser => !matchedUserIds.includes(genderedUser._id)
+  );
+
+  console.log("filteredGenderedUsers",filteredGenderedUsers)
+
+  // const logout = () => {
+  //   localStorage.clear()
+  //   setUser(null);
+  //   navigate("/")
+  // };
 
   if (!user || !genderedUsers) {
-    return "no existe el usuario"
+    return "401"
   }
   return (
     <div className="dashboard">
-      <ChatContainer />
-      <button onClick={logout}>LOGOUT</button>
+      <ChatContainer user={user}/>
+      {/* <button onClick={logout}>LOGOUT</button> */}
       <div className="swiper-container">
         <div className="card-container">
 
-
-
-          {genderedUsers.map((genderedUser) => (
+          {filteredGenderedUsers?.map((genderedUser) => (
             <TinderCard
               className="swipe"
               key={genderedUser.user_id}
@@ -95,6 +116,7 @@ const Dashboard = () => {
                 className="card"
               >
                 <h3>{genderedUser.first_name}</h3>
+                <h3>{genderedUser.user_id}</h3>
               </div>
             </TinderCard>
           ))}

@@ -41,12 +41,14 @@ const Authmodal = ({setShowModal, isSignUp }) => {
             if (response.status === 200 && isSignUp) {
                 localStorage.setItem('AuthToken', response.data.token);
                 localStorage.setItem('UserId', response.data.userId);
+                localStorage.setItem('Id', response.data.id);
                 navigate('/signup')
                 
             };
             if (response.status === 200 && !isSignUp) {
                 localStorage.setItem('AuthToken', response.data.token);
                 localStorage.setItem('UserId', response.data.userId);
+                localStorage.setItem('Id', response.data.id);
                 navigate('/dashboard')
             };
         } catch (error) {
