@@ -1,6 +1,5 @@
 import Nav from "../../components/Nav/Nav";
 import React, { useState } from "react";
-// import { useCookies } from 'react-cookie';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +8,14 @@ import { useNavigate } from "react-router-dom";
 //TODO: SOLUCIONAR PROBLEMA DE COOKIES URGENTE PARA PODER DAR USO DEL USERID EN EL FORMDATA
 
 
+
 const Signup = () => {
-  // const [cookies, setCookie, removeCookie] = useCookies(['user'])
+  let localStorageUserId = localStorage.getItem("UserId");
+  
+  
   const [formData, setFormData] = useState({
-    // user_id: cookies.UserId,
+
+    user_id: localStorageUserId,
     first_name: "",
     dob_day: "",
     dob_month: "",
@@ -52,6 +55,8 @@ const Signup = () => {
   };
 
   console.log(formData);
+
+  if (!localStorageUserId) return "401";
 
   return (
     <>
