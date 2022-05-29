@@ -3,7 +3,7 @@ import React from 'react';
 import Chat from '../Chat/Chat';
 import ChatInput from '../ChatInput/ChatInput';
 
-const Chatdisplay = () => {
+const Chatdisplay = ({user, clickedUser}) => {
     return (
         <>
         <Chat/>
