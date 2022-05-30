@@ -29,15 +29,17 @@ const Nav = ({
         />
         {/* //TODO: Añadir NavLink para la pagina de about us */}
       </div>
-
+      
       {isPage && (
+        <div className="itemsMenu-container">
         <div className="container-nav">
-          <Link to="/" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
+          <Link to="/about" className="containerNav--item">
             Home
           </Link>
-          <Link to="/about" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
+          <Link to="/about" className="containerNav--item">
             About
           </Link>
+        </div>
         </div>
       )}
 

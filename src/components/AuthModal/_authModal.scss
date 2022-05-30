@@ -18,6 +18,11 @@
     }
     .close-icon {
         float: right;
+        img.closeicon {
+            width: 20px;
+            margin-top: -5px;
+            cursor: pointer;
+        }
     }
     h2 {
         text-align: left;
@@ -25,8 +30,47 @@
     form {
         display: flex;
         flex-direction: column;
+        p {
+            background: #ffc9c9;
+            border: 2px solid #dc9696;
+            border-radius: 5px;
+            padding: 3px;
+            text-align: center;
+            font-size: $base-font-S;
+        }
     }
     input[type="password"], input[type="email"]{
         @include base-input();
     }
+    p {
+        margin-top: 6px;
+    }
+    .container-title {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        h2 {
+            padding-top: 10px;
+        }
+    }
+    img.woolBall {
+        max-width: 70px;
+        padding: 0px;
+        margin: -20px -13px;
+    }
+    @media (max-width: 567px) {
+        position: absolute !important;
+        padding: 31px 10px 50px 10px !important;
+        margin-left: auto !important;
+        margin-right: auto;
+        top: 0;
+        max-width: 100% !important;
+        height: 100% !important;
+        background-color: white;
+        font-family: "Poppins", sans-serif;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: rgb(48 48 48 / 27%) 0px 7px 60px 0px;
+      }
+    
 }

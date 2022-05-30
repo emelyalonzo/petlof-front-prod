@@ -6,6 +6,39 @@
             rgba(0, 0, 0, 0.65) 0%,
             rgba(0, 0, 0, 0) 100%    
     ), url("./img/bk-pet-tinder.jpg");
+    .isotipo {
+    @media (max-width: 567px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 9px;
+        width: 100%;
+        flex-direction: column!important;
+        }
+    .container-nav {
+        @media (max-width: 567px) {
+            margin: 0px;
+            color: white;
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-right: 0pc;
+            margin-bottom: 15px;
+            }
+    }
+    button.nav-button {
+        @media (max-width: 567px) {
+            background: none!important;
+            border: 2px solid red!important;
+            background: #ff00001a!important;
+            }
+    }
+    }
 }
 .home {
     @include flex-box-column();
