@@ -18,6 +18,8 @@ const Nav = ({
   };
 
   let colorLinks = minimal ? "black" : "white";
+  const FirstStep = localStorage.getItem("FirstStep");
+  const Dashboard = localStorage.getItem("Dashboard");
 
   return (
     <nav className="isotipo">
@@ -37,6 +39,16 @@ const Nav = ({
           <Link to="/about" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
             About
           </Link>
+          {FirstStep && 
+            <Link to="/signup" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
+              Go Back
+            </Link>
+          }
+          {Dashboard && 
+            <Link to="/dashboard" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
+              Go Back
+            </Link>
+          }
         </div>
       )}
 
