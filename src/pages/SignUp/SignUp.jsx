@@ -3,18 +3,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 //TODO: Poner el codigo en estilos o react para que el input de gender_identity y gender_interest se pinten como seleccionados en el signup
-//TODO: SOLUCIONAR PROBLEMA DE COOKIES URGENTE PARA PODER DAR USO DEL USERID EN EL FORMDATA
-
-
 
 const Signup = () => {
   let localStorageUserId = localStorage.getItem("UserId");
-  
-  
-  const [formData, setFormData] = useState({
 
+  const [formData, setFormData] = useState({
     user_id: localStorageUserId,
     first_name: "",
     dob_day: "",
@@ -27,20 +21,18 @@ const Signup = () => {
     matches: [],
   });
 
-  let navigate = useNavigate()
-
-   
+  let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      //TODO: LLAMAR AL CUSTOM HOOK DE USEUSER.JSX PARA EDIT 
-      const response = await axios.put('http://localhost:3001/users/edit', { formData })
-      if (response.status === 200) navigate('/dashboard');
+      const response = await axios.put("http://localhost:3001/users/edit", {
+        formData,
+      });
+      if (response.status === 200) navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }
-
   };
 
   const handleChange = (e) => {
@@ -56,18 +48,23 @@ const Signup = () => {
 
   console.log(formData);
 
-  if (!localStorageUserId) return "401";
+  // if (!localStorageUserId) return "401";
 
   return (
     <>
-      <Nav minimal={true} setShowModal={() => {}} showModal={false} />
+      <Nav
+        minimal={true}
+        isPage={false}
+        setShowModal={() => {}}
+        showModal={false}
+      />
       <div className="signUp">
-        <h2>CREAR CUENTA</h2>
+        <h2>CREATE ACCOUNT</h2>
 
         <form onSubmit={handleSubmit} className="signUpForm">
           <section className="signUpForm__section">
             <label htmlFor="first_name">
-              Nombre
+              Name
               <div className="signUpForm__multipleInput">
                 <input
                   className="signUpForm__input"
@@ -83,7 +80,7 @@ const Signup = () => {
             </label>
 
             <label htmlFor="dob_day">
-              Cumpleaños
+              Date of birth
               <div className="signUpForm__multipleInput">
                 <input
                   className="signUpForm__input"
@@ -119,7 +116,7 @@ const Signup = () => {
             </label>
 
             <label htmlFor="gender_identity">
-              Género
+              Gender
               <div className="signUpForm__multipleInput">
                 <label
                   htmlFor="man-gender_identity"
@@ -157,7 +154,7 @@ const Signup = () => {
                   htmlFor="other-gender_identity"
                   className="signUpForm__label"
                 >
-                  Otros
+                  Other
                 </label>
                 <input
                   className="signUpForm__input"
@@ -173,7 +170,7 @@ const Signup = () => {
             </label>
 
             <label htmlFor="show_me">
-              Muéstrame
+              Gender interest
               <div className="signUpForm__multipleInput">
                 <label
                   htmlFor="man-gender_interest"
@@ -211,7 +208,7 @@ const Signup = () => {
                   htmlFor="everyone-gender_interest"
                   className="signUpForm__label"
                 >
-                  Todos
+                  Everyone
                 </label>
                 <input
                   className="signUpForm__input"
@@ -227,7 +224,7 @@ const Signup = () => {
             </label>
 
             <label htmlFor="about">
-              Sobre mí
+              About me
               <div className="signUpForm__multipleInput">
                 <input
                   className="signUpForm__input"
@@ -247,7 +244,7 @@ const Signup = () => {
 
           <section className="signUpForm__section">
             <label htmlFor="imageURL">
-              Profile Image Url
+              Profile Image Url (.jpg or .png)
               <div className="signUpForm__multipleInput">
                 <input
                   className="signUpForm__input--profile"
@@ -261,14 +258,16 @@ const Signup = () => {
             </label>
 
             <div className="signUpForm__photo-container">
-              {formData.imageURL && <img 
-                src={formData.imageURL}
-                alt="profile pic preview"
-                className="signUpForm__photo-container"
-              />}
+              {formData.imageURL && (
+                <img
+                  src={formData.imageURL}
+                  alt="profile pic preview"
+                  className="signUpForm__photo-container"
+                />
+              )}
             </div>
           </section>
-        </form> 
+        </form>
       </div>
     </>
   );

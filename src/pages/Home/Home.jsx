@@ -7,9 +7,14 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
 
-  const authToken = false;
-
+  const authToken = localStorage.getItem("AuthToken");
+  
   const handleClick = () => {
+    if(authToken) {
+      localStorage.clear()
+      window.location.reload()
+      return 
+    }
     setShowModal(true);
     setIsSignUp(true);
   };
@@ -17,6 +22,7 @@ const Home = () => {
   return (
     <div className="overlay">
       <Nav minimal={false} 
+           isPage={true}
            authToken={authToken} 
            setShowModal={setShowModal} 
            showModal={showModal}
