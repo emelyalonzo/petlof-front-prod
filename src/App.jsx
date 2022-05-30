@@ -8,6 +8,7 @@ import Signup from "./pages/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import About from "./pages/About/About";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import DashboardPrivateRoute from "./components/PrivateRoute/DashboardPrivateRoute";
 
 const App = () => {
 
@@ -16,11 +17,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
-        {/* Redirigir a home si no está loggeado  */}
         <Route exact path='/' element={<PrivateRoute/>}> 
-          {/* /user/signup */}
           <Route path="/signup" element={<Signup/>}/> 
-          {/* /user/dashboard */}
+        </Route>
+        <Route exact path='/' element={<DashboardPrivateRoute/>}> 
           <Route path="/dashboard" element={<Dashboard/>}/> 
         </Route>
       </Routes>

@@ -6,6 +6,7 @@ const Matchesdisplay = ({ matches, setClickedUser }) => {
     const [matchedProfiles, setMatchedProfiles] = useState(null)
 
     const matchedUserIds = matches.map((id) => id);
+    const userId = localStorage.getItem("UserId");
 
     const getMatches = async () => {
         try {
@@ -20,7 +21,13 @@ const Matchesdisplay = ({ matches, setClickedUser }) => {
 
     useEffect(() => {
         getMatches()
-    }, []);
+    }, [matches]);
+
+    // const filteredMatchedProfiles = matchedProfiles?.filter(
+    //     (matchedProfile) => 
+    //         matchedProfile.matches.filter(
+    //             (profile) => 
+    //                 profile.user_id === userId).length > 0)
 
     return (
         <div className="matches-display">
