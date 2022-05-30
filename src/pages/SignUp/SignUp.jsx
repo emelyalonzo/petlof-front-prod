@@ -5,16 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 
 //TODO: Poner el codigo en estilos o react para que el input de gender_identity y gender_interest se pinten como seleccionados en el signup
-//TODO: SOLUCIONAR PROBLEMA DE COOKIES URGENTE PARA PODER DAR USO DEL USERID EN EL FORMDATA
-
-
 
 const Signup = () => {
   let localStorageUserId = localStorage.getItem("UserId");
   
   
   const [formData, setFormData] = useState({
-
     user_id: localStorageUserId,
     first_name: "",
     dob_day: "",
@@ -34,7 +30,6 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      //TODO: LLAMAR AL CUSTOM HOOK DE USEUSER.JSX PARA EDIT 
       const response = await axios.put('http://localhost:3001/users/edit', { formData })
       if (response.status === 200) navigate('/dashboard');
     } catch (err) {
@@ -60,7 +55,7 @@ const Signup = () => {
 
   return (
     <>
-      <Nav minimal={true} setShowModal={() => {}} showModal={false} />
+      <Nav minimal={true} isPage={false} setShowModal={() => {}} showModal={false} />
       <div className="signUp">
         <h2>CREAR CUENTA</h2>
 

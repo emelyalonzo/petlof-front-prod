@@ -3,9 +3,7 @@ import whiteLogo from "../../images/petLove-Logo-full.svg";
 //TODO: importar diferentes logos para distinguir si el usuario ha hecho login o no
 import colorLogo from "../../images/petLove-Logo-full.svg";
 
-const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
-
-    //?  minimal is set to distinguish between display one logo or another logo
+const Nav = ({minimal, isPage,  authToken, setShowModal, showModal, setIsSignUp}) => {
 
     const handleClick = () => {
         setShowModal(true);
@@ -22,10 +20,10 @@ const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp}) => {
                 />
                 {/* //TODO: Añadir NavLink para la pagina de about us */}
             </div>
-            <div className='container-nav'>
-            <h2 className="asg">Home</h2>
-            <h2 className="asg">About</h2>
-            </div>
+            {isPage && <div className='container-nav'>
+                <h2 className="asg">Home</h2>
+                <h2 className="asg">About</h2>
+            </div>}
             {!authToken && !minimal && (
                 <button
                     className="nav-button"

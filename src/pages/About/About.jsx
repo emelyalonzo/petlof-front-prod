@@ -5,6 +5,7 @@ const About = () => {
     <div>
         <Nav 
           minimal={true}
+          isPage={true}
           setShowModal={() => {}}
           showModal={false}
         />
