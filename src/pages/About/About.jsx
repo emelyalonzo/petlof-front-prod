@@ -3,7 +3,11 @@ import Nav from '../../components/Nav/Nav'
 const About = () => {
   return (
     <div>
-        <Nav />
+        <Nav 
+          minimal={true}
+          setShowModal={() => {}}
+          showModal={false}
+        />
         <div className='titleAbout'>
             <h2>About Us</h2>
             <p>Group of developers.</p>
