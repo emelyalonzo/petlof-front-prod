@@ -14,10 +14,12 @@ const Nav = ({
 }) => {
   const handleClick = () => {
     setShowModal(true);
-    setIsSignUp(false); //its false because when clicking we are logging in
+    setIsSignUp(false); 
   };
 
   let colorLinks = minimal ? "black" : "white";
+  const FirstStep = localStorage.getItem("FirstStep");
+  const Dashboard = localStorage.getItem("Dashboard");
 
   return (
     <nav className="isotipo">
@@ -27,19 +29,28 @@ const Nav = ({
           src={minimal ? colorLogo : whiteLogo}
           alt="logo"
         />
-        {/* //TODO: Añadir NavLink para la pagina de about us */}
       </div>
       
       {isPage && (
         <div className="itemsMenu-container">
-        <div className="container-nav">
-          <Link to="/about" className="containerNav--item">
-            Home
-          </Link>
-          <Link to="/about" className="containerNav--item">
-            About
-          </Link>
-        </div>
+          <div className="container-nav">
+            <Link to="/" className="containerNav--item">
+              Home
+            </Link>
+            <Link to="/about" className="containerNav--item">
+              About
+            </Link>
+            {FirstStep && 
+              <Link to="/signup" className="containerNav--item">
+                SignUp
+              </Link>
+            }
+            {Dashboard && 
+              <Link to="/dashboard" className="containerNav--item">
+                Dashboard
+              </Link>
+            }
+          </div>
         </div>
       )}
 
