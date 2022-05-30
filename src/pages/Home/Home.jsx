@@ -10,13 +10,13 @@ const Home = () => {
   const authToken = localStorage.getItem("AuthToken");
   
   const handleClick = () => {
-    setShowModal(true);
-    setIsSignUp(true);
-
     if(authToken) {
       localStorage.clear()
       window.location.reload()
+      return 
     }
+    setShowModal(true);
+    setIsSignUp(true);
   };
 
   return (

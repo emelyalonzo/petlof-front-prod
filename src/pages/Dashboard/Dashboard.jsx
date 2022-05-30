@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import axios from "axios";
-// import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
 
@@ -12,7 +11,6 @@ const Dashboard = () => {
 
   const userId = localStorage.getItem("UserId");
   const Id = localStorage.getItem("Id");
-  // const navigate = useNavigate();
 
   const getUser = async () => {
     try {
@@ -77,16 +75,13 @@ const Dashboard = () => {
 
   const matchedUserIds = user?.matches.map((id) => id).concat(Id);
 
-  console.log("matchedUserIds",matchedUserIds)
+  // console.log("matchedUserIds",matchedUserIds)
   //* Ahora hay que descartar los usuarios cuyo id se encuentre en el array de matchedUserIds, es decir, o bien sea el id del usuario loggeado
   //* o bien sea el id de alguno de los matches del usuario loggeado.
 
-  console.log("genderedUsers", genderedUsers)
   const filteredGenderedUsers = genderedUsers?.filter(
     genderedUser => !matchedUserIds.includes(genderedUser._id)
   );
-
-  console.log("filteredGenderedUsers",filteredGenderedUsers)
 
   // const logout = () => {
   //   localStorage.clear()

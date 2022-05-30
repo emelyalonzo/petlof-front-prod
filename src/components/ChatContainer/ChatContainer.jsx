@@ -8,7 +8,7 @@ const ChatContainer = ({ user }) => {
 
   const [clickedUser, setClickedUser] = useState(null)
 
-  console.log("clickUser", clickedUser)
+  // console.log("clickUser", clickedUser)
 
   return (
     <div className="chatContainer">

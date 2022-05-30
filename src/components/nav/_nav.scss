@@ -19,10 +19,12 @@ nav.isotipo {
     button.nav-button {
         margin: 0px!important;
     }
-    
-    
+
 }
+
 .container-nav {
     @include seudo-nav();
+    
 }
+
 

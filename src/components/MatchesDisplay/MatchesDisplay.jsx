@@ -5,18 +5,13 @@ const Matchesdisplay = ({ matches, setClickedUser }) => {
 
     const [matchedProfiles, setMatchedProfiles] = useState(null)
 
-    console.log("matches en matchesDisplay", matches)
-
     const matchedUserIds = matches.map((id) => id);
-
-    console.log("matchedUserIds en MatchesDisplay",matchedUserIds)
 
     const getMatches = async () => {
         try {
             const {data: {data}} = await axios.get('http://localhost:3001/match', {
                 params: {userIds: JSON.stringify(matchedUserIds)}
             })
-            console.log("datos de respuesta para obtener matches", data.foundUsers)
             setMatchedProfiles(data.foundUsers);
         } catch (err) {
             console.log(err)
@@ -29,8 +24,8 @@ const Matchesdisplay = ({ matches, setClickedUser }) => {
 
     return (
         <div className="matches-display">
-            {matchedProfiles?.map((match, _index) => (
-                <div key={{_index}} className="match-card" onClick={() => setClickedUser(match)}>
+            {matchedProfiles?.map((match) => (
+                <div key={match.user_id} className="match-card" onClick={() => setClickedUser(match)}>
                     <div className='img-container'>
                         <img src={match?.imageURL} alt={match?.first_name + " profile"} />
                     </div>
