@@ -33,24 +33,24 @@ const Nav = ({
       
       {isPage && (
         <div className="itemsMenu-container">
-        <div className="container-nav">
-          <Link to="/about" className="containerNav--item">
-            Home
-          </Link>
-          <Link to="/about" className="containerNav--item">
-            About
-          </Link>
-          {FirstStep && 
-            <Link to="/signup" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
-              Go Back
+          <div className="container-nav">
+            <Link to="/" className="containerNav--item">
+              Home
             </Link>
-          }
-          {Dashboard && 
-            <Link to="/dashboard" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
-              Go Back
+            <Link to="/about" className="containerNav--item">
+              About
             </Link>
-          }
-        </div>
+            {FirstStep && 
+              <Link to="/signup" className="containerNav--item">
+                SignUp
+              </Link>
+            }
+            {Dashboard && 
+              <Link to="/dashboard" className="containerNav--item">
+                Dashboard
+              </Link>
+            }
+          </div>
         </div>
       )}
 
