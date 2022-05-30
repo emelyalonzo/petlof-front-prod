@@ -11,6 +11,8 @@ const Dashboard = () => {
 
   const userId = localStorage.getItem("UserId");
   const Id = localStorage.getItem("Id");
+  localStorage.removeItem('FirstStep');
+  localStorage.setItem('Dashboard', "true");
 
   const getUser = async () => {
     try {

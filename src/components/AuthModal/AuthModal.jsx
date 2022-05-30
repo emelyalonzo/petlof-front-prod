@@ -41,6 +41,7 @@ const Authmodal = ({setShowModal, isSignUp }) => {
                 localStorage.setItem('AuthToken', response.data.token);
                 localStorage.setItem('UserId', response.data.userId);
                 localStorage.setItem('Id', response.data.id);
+                localStorage.setItem('FirstStep', "true");
                 navigate('/signup')
                 
             };

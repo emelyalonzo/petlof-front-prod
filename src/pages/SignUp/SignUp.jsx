@@ -29,7 +29,11 @@ const Signup = () => {
       const response = await axios.put("http://localhost:3001/users/edit", {
         formData,
       });
-      if (response.status === 200) navigate("/dashboard");
+      if (response.status === 200) {
+        localStorage.removeItem("FirstStep");
+        navigate("/dashboard")
+        
+      };
     } catch (err) {
       console.log(err);
     }
