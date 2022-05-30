@@ -14,7 +14,7 @@ const Nav = ({
 }) => {
   const handleClick = () => {
     setShowModal(true);
-    setIsSignUp(false); //its false because when clicking we are logging in
+    setIsSignUp(false); 
   };
 
   let colorLinks = minimal ? "black" : "white";
@@ -27,7 +27,6 @@ const Nav = ({
           src={minimal ? colorLogo : whiteLogo}
           alt="logo"
         />
-        {/* //TODO: Añadir NavLink para la pagina de about us */}
       </div>
 
       {isPage && (
