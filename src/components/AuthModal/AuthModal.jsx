@@ -63,10 +63,10 @@ const Authmodal = ({setShowModal, isSignUp }) => {
     return (
         <div className="auth-modal">
             <div className="close-icon" onClick={handleClick}>
-            <img className="closeicon" src={closeicon} alt="Close Icon" />
+            <img className="closeicon" src={closeicon} alt="Close Icon"/>
             </div>
             <div className="container-title">
-            <img className="woolBall" src={woolBall} alt="Wool Ball" />
+            <img className="woolBall" src={woolBall} alt="Wool Ball"/>
             <h2>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h2>
             </div>
             <p>By clicking login, you agree to our terms. Learn how we process your data in our Privacy Policy and Cookie Policy</p>
@@ -97,7 +97,7 @@ const Authmodal = ({setShowModal, isSignUp }) => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 />}
                 <input className="secondary-button" type="submit"/>
-                <p>{error}</p>
+                {error && <p>{error}</p>}
 
             </form>
 

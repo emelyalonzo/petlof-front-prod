@@ -33,6 +33,7 @@ const Nav = ({
       
       {isPage && (
         <div className="itemsMenu-container">
+<<<<<<< HEAD
         <div className="container-nav">
           <Link to="/about" className="containerNav--item">
             Home
@@ -51,6 +52,26 @@ const Nav = ({
             </Link>
           }
         </div>
+=======
+          <div className="container-nav">
+            <Link to="/" className="containerNav--item">
+              Home
+            </Link>
+            <Link to="/about" className="containerNav--item">
+              About
+            </Link>
+            {FirstStep && 
+              <Link to="/signup" className="containerNav--item">
+                SignUp
+              </Link>
+            }
+            {Dashboard && 
+              <Link to="/dashboard" className="containerNav--item">
+                Dashboard
+              </Link>
+            }
+          </div>
+>>>>>>> 15288785268e0ff2653b26486678d3963aad7d7b
         </div>
       )}
 
