@@ -30,7 +30,7 @@ const Nav = ({
           alt="logo"
         />
       </div>
-
+      
       {isPage && (
         <div className="itemsMenu-container">
           <div className="container-nav">
@@ -56,6 +56,7 @@ const Nav = ({
                 Dashboard
               </Link>
             )}
+
           </div>
         </div>
       )}

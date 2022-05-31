@@ -63,6 +63,7 @@ const Authmodal = ({setShowModal, isSignUp }) => {
     return (
         <div className="auth-modal">
             <div className="close-icon" onClick={handleClick}>
+
             <img className="closeicon" src={closeicon} alt="Close Icon"/>
             </div>
             <div className="container-title">
