@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import whiteLogo from "../../images/petLove-Logo-full.svg";
 //TODO: importar diferentes logos para distinguir si el usuario ha hecho login o no
-import colorLogo from "../../images/petLove-Logo-full.svg";
+import colorLogo from "../../images/petLove-Logo-full-black.svg";
 
 const Nav = ({
+  isAbout,
   minimal,
   isPage,
   authToken,
@@ -17,7 +18,6 @@ const Nav = ({
     setIsSignUp(false);
   };
 
-  let colorLinks = minimal ? "black" : "white";
   const FirstStep = localStorage.getItem("FirstStep");
   const Dashboard = localStorage.getItem("Dashboard");
 
@@ -26,7 +26,7 @@ const Nav = ({
       <div className="logo-container">
         <img
           className="logo-isotipo"
-          src={minimal ? colorLogo : whiteLogo}
+          src={minimal && !isAbout ? colorLogo : whiteLogo}
           alt="logo"
         />
       </div>
@@ -34,7 +34,7 @@ const Nav = ({
       {isPage && (
         <div className="itemsMenu-container">
           <div className="container-nav">
-            <Link to="/about" 
+            <Link to="/" 
             className="containerNav--item">
               Home
             </Link>

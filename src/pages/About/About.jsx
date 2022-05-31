@@ -10,7 +10,8 @@ const About = () => {
   return (
     <div>
         <Nav 
-          minimal={true}
+          isAbout={true}
+          minimal={true} 
           isPage={true}
           setShowModal={() => {}}
           showModal={false}
