@@ -14,7 +14,7 @@ const Nav = ({
 }) => {
   const handleClick = () => {
     setShowModal(true);
-    setIsSignUp(false); 
+    setIsSignUp(false);
   };
 
   let colorLinks = minimal ? "black" : "white";
@@ -30,48 +30,33 @@ const Nav = ({
           alt="logo"
         />
       </div>
-      
+
       {isPage && (
         <div className="itemsMenu-container">
-<<<<<<< HEAD
-        <div className="container-nav">
-          <Link to="/about" className="containerNav--item">
-            Home
-          </Link>
-          <Link to="/about" className="containerNav--item">
-            About
-          </Link>
-          {FirstStep && 
-            <Link to="/signup" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
-              Go Back
-            </Link>
-          }
-          {Dashboard && 
-            <Link to="/dashboard" style={{color: colorLinks, fontSize: '20px', textDecoration: 'none', fontWeight: "bold"}}>
-              Go Back
-            </Link>
-          }
-        </div>
-=======
           <div className="container-nav">
-            <Link to="/" className="containerNav--item">
+            <Link to="/about" 
+            className="containerNav--item">
               Home
             </Link>
-            <Link to="/about" className="containerNav--item">
+            <Link to="/about" 
+            className="containerNav--item">
               About
             </Link>
-            {FirstStep && 
-              <Link to="/signup" className="containerNav--item">
-                SignUp
+            {FirstStep && (
+              <Link
+                to="/signup"
+                className="containerNav--item">
+                Sign Up
               </Link>
-            }
-            {Dashboard && 
-              <Link to="/dashboard" className="containerNav--item">
+            )}
+            {Dashboard && (
+              <Link
+                to="/dashboard"
+                className="containerNav--item">              
                 Dashboard
               </Link>
-            }
+            )}
           </div>
->>>>>>> 15288785268e0ff2653b26486678d3963aad7d7b
         </div>
       )}
 
