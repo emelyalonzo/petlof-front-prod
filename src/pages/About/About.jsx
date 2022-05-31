@@ -5,6 +5,7 @@ import alfonso from '../../images/alfonso.png';
 import emely from '../../images/Emely.png';
 import sergio from '../../images/sergio.png';
 import logoLove from '../../images/cat-love.svg';
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div>
@@ -27,6 +28,9 @@ const About = () => {
         <img className='catLogoSty' src={logoCat} alt="LogoCat" />
             <h2>How our app works?</h2>
             <p>Their About Us page stands out by showcasing some of their unique and creative projects.</p>
+            <Link to="/signup" className="containerNav-item--about">
+                SignUp
+            </Link>
         </div>
         </div>
         {/* ABOUT DEV*/}
@@ -40,7 +44,10 @@ const About = () => {
         <img className='imgUserDevs' src={alfonso} alt="LogoCat" />
         <h2>Alfonso Manzanares</h2>
         <p>Their About Us page stands out by showcasing some of their unique and creative projects.</p>
-        </div>
+        <Link to="https://gogle.com" className="containerNav-item--about">
+                SignUp
+            </Link>
+         </div>
         <div className='dev-1'>
         <img className='imgUserDevs' src={emely} alt="LogoCat" />
         <h2>Emely Alonso</h2>
