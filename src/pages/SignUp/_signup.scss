@@ -77,4 +77,10 @@ input[type="submit"]:hover {
 input[type="submit"]:active {
   background-color: rgb(226, 115, 155);
 }
-// -webkit-appearance: none;
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+input[type=number] { -moz-appearance:textfield; }

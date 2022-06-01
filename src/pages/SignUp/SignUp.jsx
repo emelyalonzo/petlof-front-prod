@@ -1,12 +1,13 @@
-import Nav from "../../components/Nav/Nav";
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Nav from "../../components/Nav/Nav";
 
 //TODO: Poner el codigo en estilos o react para que el input de gender_identity y gender_interest se pinten como seleccionados en el signup
 
 const Signup = () => {
   let localStorageUserId = localStorage.getItem("UserId");
+  let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     user_id: localStorageUserId,
@@ -21,8 +22,7 @@ const Signup = () => {
     matches: [],
   });
 
-  let navigate = useNavigate();
-
+// Second step of registration. Send the remaining data to the API.
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,9 +31,8 @@ const Signup = () => {
       });
       if (response.status === 200) {
         localStorage.removeItem("FirstStep");
-        navigate("/dashboard")
-        
-      };
+        navigate("/dashboard");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -49,10 +48,6 @@ const Signup = () => {
       [name]: value,
     }));
   };
-
-  console.log(formData);
-
-  // if (!localStorageUserId) return "401";
 
   return (
     <>
@@ -74,7 +69,7 @@ const Signup = () => {
                   className="signUpForm__input"
                   id="first_name"
                   type="text"
-                  min="0" 
+                  min="0"
                   oninput="validity.valid||(value='');"
                   name="first_name"
                   placeholder="Nombre"
@@ -92,7 +87,8 @@ const Signup = () => {
                   className="signUpForm__input"
                   id="dob_day"
                   type="number"
-                  min="0" 
+                  min="0"
+                  max="31"
                   oninput="validity.valid||(value='');"
                   name="dob_day"
                   placeholder="dd"
@@ -104,7 +100,8 @@ const Signup = () => {
                   className="signUpForm__input"
                   id="dob_month"
                   type="number"
-                  min="0" 
+                  min="0"
+                  max="12"
                   oninput="validity.valid||(value='');"
                   name="dob_month"
                   placeholder="mm"
@@ -116,7 +113,8 @@ const Signup = () => {
                   className="signUpForm__input"
                   id="dob_year"
                   type="number"
-                  min="0" 
+                  min="0"
+                  max="9999"
                   oninput="validity.valid||(value='');"
                   name="dob_year"
                   placeholder="aaaa"
@@ -276,7 +274,6 @@ const Signup = () => {
                   src={formData.imageURL}
                   alt="profile pic preview"
                   className="signUpForm__photo-container"
-                  
                 />
               )}
             </div>
