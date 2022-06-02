@@ -22,7 +22,7 @@ const Signup = () => {
     matches: [],
   });
 
-// Second step of registration. Send the remaining data to the API.
+  // Second step of registration. Send the remaining data to the API.
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -58,19 +58,19 @@ const Signup = () => {
         showModal={false}
       />
       <div className="signUp">
+      <div className="bk-signup">
         <h2>CREATE ACCOUNT</h2>
-
+      </div>
         <form onSubmit={handleSubmit} className="signUpForm">
           <section className="signUpForm__section">
             <label htmlFor="first_name">
-              Name
+            <h3 className="title-label">Name</h3>
               <div className="signUpForm__multipleInput">
                 <input
                   className="signUpForm__input"
                   id="first_name"
                   type="text"
                   min="0"
-                  oninput="validity.valid||(value='');"
                   name="first_name"
                   placeholder="Nombre"
                   required={true}
@@ -89,7 +89,6 @@ const Signup = () => {
                   type="number"
                   min="0"
                   max="31"
-                  oninput="validity.valid||(value='');"
                   name="dob_day"
                   placeholder="dd"
                   required={true}
@@ -102,7 +101,6 @@ const Signup = () => {
                   type="number"
                   min="0"
                   max="12"
-                  oninput="validity.valid||(value='');"
                   name="dob_month"
                   placeholder="mm"
                   required={true}
@@ -115,7 +113,6 @@ const Signup = () => {
                   type="number"
                   min="0"
                   max="9999"
-                  oninput="validity.valid||(value='');"
                   name="dob_year"
                   placeholder="aaaa"
                   required={true}

@@ -52,30 +52,36 @@ const About = () => {
         <div className="aboutDev-container--imgs">
           <div className="dev-1">
             <img className="imgUserDevs" src={alfonso} alt="LogoCat" />
-            <h2>Alfonso Manzanares</h2>
+            <h2>Alfonso de la Manzanara</h2>
             <p>
               Their About Us page stands out by showcasing some of their unique
               and creative projects.
             </p>
-            <Link to="https://gogle.com" className="containerNav-item--about">
-              SignUp
-            </Link>
+            <a href="https://google.com" target="_blank" rel="noreferrer">
+            <button className="btn-link">Ver Linkedin</button>
+            </a>
           </div>
           <div className="dev-1">
             <img className="imgUserDevs" src={emely} alt="LogoCat" />
-            <h2>Emely Alonso</h2>
+            <h2>Emely Alonzo</h2>
             <p>
               Their About Us page stands out by showcasing some of their unique
               and creative projects.
             </p>
+            <a href="https://google.com" target="_blank" rel="noreferrer">
+            <button className="btn-link">Ver Linkedin</button>
+            </a>
           </div>
           <div className="dev-1">
             <img className="imgUserDevs" src={sergio} alt="LogoCat" />
-            <h2>Sergio Soler</h2>
+            <h2>Sergio Soler como alter ego de la iguana africana</h2>
             <p>
               Their About Us page stands out by showcasing some of their unique
               and creative projects.
             </p>
+            <a href="https://www.linkedin.com/in/cvitaess/" target="_blank" rel="noreferrer">
+            <button className="btn-link">Ver Linkedin</button>
+            </a>
           </div>
         </div>
       </div>

@@ -97,30 +97,34 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <ChatContainer user={user} />
-      <div className="swiper-container">
-        <div className="card-container">
-          {filteredGenderedUsers?.map((genderedUser) => (
-            <TinderCard
-              className="swipe"
-              key={genderedUser.user_id}
-              onSwipe={(dir) => swiped(dir, genderedUser.user_id)}
-              onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}
-            >
-              <div
-                style={{
-                  backgroundImage: "url(" + genderedUser.imageURL + ")",
-                }}
-                className="card"
+      <div className="chatContainer-colum">
+        <ChatContainer user={user} />
+      </div>
+      <div className="swipe-colum">
+        <div className="swiper-container">
+          <div className="card-container">
+            {filteredGenderedUsers?.map((genderedUser) => (
+              <TinderCard
+                className="swipe"
+                key={genderedUser.user_id}
+                onSwipe={(dir) => swiped(dir, genderedUser.user_id)}
+                onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}
               >
-                <h3>{genderedUser.first_name}</h3>
-                <h3>{genderedUser.user_id}</h3>
-              </div>
-            </TinderCard>
-          ))}
+                <div
+                  style={{
+                    backgroundImage: "url(" + genderedUser.imageURL + ")",
+                  }}
+                  className="card"
+                >
+                  <h3>{genderedUser.first_name}</h3>
+                  <h3>{genderedUser.user_id}</h3>
+                </div>
+              </TinderCard>
+            ))}
 
-          <div className="swipe-info">
-            {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
+            <div className="swipe-info">
+              {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
+            </div>
           </div>
         </div>
       </div>
