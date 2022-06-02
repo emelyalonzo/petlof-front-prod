@@ -41,7 +41,7 @@
     margin: 5px 3px;
     padding: 7px 10px;
     &:hover {
-      background-color: #f2f2f2;
+      background-color: #ffc9c5;
       cursor: pointer;
     }
     &::placeholder  {
@@ -72,12 +72,21 @@
 .signUpForm {
   display: flex;
   justify-content: center;
+  background: #f6f6f6;
+  max-width: 850px;
+  border-radius: 0px 0px 15px 15px;
   @media (max-width: 860px) {
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
+}
+.signUpForm__input {
+  width: 100%;
+}
+.btn-input {
+  @include base-button();
 }
   h3.title-label {
     padding: 0px;
@@ -134,9 +143,7 @@ input#about {
       max-width: 100%;
       width: 100%;
     }
-    .signUpForm__input {
-      width: 100%;
-  }
+    
     &::placeholder  {
     color:$base-color;
     font-weight:$base-weight-bold;

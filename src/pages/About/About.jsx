@@ -53,34 +53,22 @@ const About = () => {
           <div className="dev-1">
             <img className="imgUserDevs" src={alfonso} alt="LogoCat" />
             <h2>Alfonso de la Manzanara</h2>
-            <p>
-              Their About Us page stands out by showcasing some of their unique
-              and creative projects.
-            </p>
-            <a href="https://google.com" target="_blank" rel="noreferrer">
-            <button className="btn-link">Ver Linkedin</button>
+            <a href="https://github.com/Alfonsodela" target="_blank" rel="noreferrer">
+            <button className="btn-link">Check GITHUB</button>
             </a>
           </div>
           <div className="dev-1">
             <img className="imgUserDevs" src={emely} alt="LogoCat" />
             <h2>Emely Alonzo</h2>
-            <p>
-              Their About Us page stands out by showcasing some of their unique
-              and creative projects.
-            </p>
-            <a href="https://google.com" target="_blank" rel="noreferrer">
-            <button className="btn-link">Ver Linkedin</button>
+            <a href="https://github.com/emelyalonzo" target="_blank" rel="noreferrer">
+            <button className="btn-link">Check GITHUB</button>
             </a>
           </div>
           <div className="dev-1">
             <img className="imgUserDevs" src={sergio} alt="LogoCat" />
-            <h2>Sergio Soler como alter ego de la iguana africana</h2>
-            <p>
-              Their About Us page stands out by showcasing some of their unique
-              and creative projects.
-            </p>
-            <a href="https://www.linkedin.com/in/cvitaess/" target="_blank" rel="noreferrer">
-            <button className="btn-link">Ver Linkedin</button>
+            <h2>Sergio Soler</h2>
+            <a href="https://github.com/S-SOLER" target="_blank" rel="noreferrer">
+            <button className="btn-link">Check GITHUB</button>
             </a>
           </div>
         </div>

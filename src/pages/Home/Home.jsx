@@ -33,7 +33,7 @@ const Home = () => {
         <div className="div-container--title">
           <img className="img-logo" src={logo} alt="Logo" />
           <h1 className="title-h1">
-            Pet <span className="boldLove">Lof</span>
+            Pet <span className="boldLove">Love</span>
             <span className="copyRightSpan">®</span>
           </h1>
           <div className="div-container--buttons">
