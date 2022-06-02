@@ -1,0 +1,85 @@
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.65) 0%,
+            rgba(0, 0, 0, 0) 100%    
+    ), url("./img/bk-pet-tinder.jpg");
+    .isotipo {
+    @media (max-width: 567px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 9px;
+        width: 100%;
+        flex-direction: column!important;
+        }
+    .container-nav {
+        @media (max-width: 567px) {
+            margin: 0px;
+            color: white;
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-right: 0pc;
+            margin-bottom: 15px;
+            }
+    }
+    button.nav-button {
+        @media (max-width: 567px) {
+            background: none!important;
+            border: 2px solid red!important;
+            background: #ff00001a!important;
+            }
+    }
+    }
+}
+.home {
+    @include flex-box-column();
+    height: 70%;
+    width: 100%;
+    margin: $none-margin;
+    padding: $none-pad;
+    img.img-logo {
+        max-width: 140px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+.div-container--title {
+    @include flex-box-column();
+    .title-h1 {
+        margin: $none-margin;
+        color:$base-color-w;
+        font-family: $base-font;
+        text-align: center;
+        font-size: $base-font-logo;
+        font-weight: $base-weight-think;
+        .boldLove {
+        font-weight: $base-weight-bold;
+        }
+        .copyRightSpan {
+        font-weight: $base-weight-think;
+        }
+    }   
+    .div-container--buttons {
+        @include flex-box-wrap();
+        .primary-button {
+            @include base-button();
+            &:hover {
+                background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+                background-color:#c62d1f;
+            }
+            &:active {
+                position:relative;
+                top:1px;
+            }
+        }
+    } 
+}
