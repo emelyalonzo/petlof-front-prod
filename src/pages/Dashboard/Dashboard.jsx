@@ -116,8 +116,7 @@ const Dashboard = () => {
                   }}
                   className="card"
                 >
-                  <h3>{genderedUser.first_name}</h3>
-                  <h3>{genderedUser.about}</h3>
+                  <h3><span className="h3-span">{genderedUser.first_name}</span>{genderedUser.about}</h3>
                 </div>
               </TinderCard>
             ))}

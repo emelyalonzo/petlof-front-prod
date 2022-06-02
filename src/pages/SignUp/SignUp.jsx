@@ -245,8 +245,6 @@ const Signup = () => {
                 />
               </div>
             </label>
-
-            <input className="signUpForm__input" type="submit" value="Enviar" />
           </section>
 
           <section className="signUpForm__section">
@@ -274,6 +272,7 @@ const Signup = () => {
                 />
               )}
             </div>
+            <input className="signUpForm__input btn-input" type="submit" value="Enviar" />
           </section>
         </form>
       </div>
