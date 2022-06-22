@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import Nav from "../../components/Nav/Nav";
+import { userApi } from "../../services";
 
 //TODO: Poner el codigo en estilos o react para que el input de gender_identity y gender_interest se pinten como seleccionados en el signup
 
@@ -26,9 +27,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put("http://localhost:3001/users/edit", {
-        formData,
-      });
+      const response = await userApi.edit(formData);
       if (response.status === 200) {
         localStorage.removeItem("FirstStep");
         navigate("/dashboard");

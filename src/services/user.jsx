@@ -11,7 +11,8 @@ const add = (data) => api.post(data);
 
 const get = () => api.get();
 
-const edit = () => api.put(`/edit`);
+const edit = (data) => api.put(`/edit`, data);
+// const edit = (formData) => api.put(`/edit`, formData);
 
 const getUser = (id) => api.get(id);
 
