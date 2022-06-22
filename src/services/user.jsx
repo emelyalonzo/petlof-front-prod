@@ -9,6 +9,12 @@ const api = axios.create({
 
 const add = (data) => api.post(data);
 
-const get = () => api.get()
+const get = () => api.get();
 
-export { add, get };
+const edit = () => api.put(`/edit`);
+
+const getUser = (id) => api.get(id);
+
+const getGendered = (gender_identity) => api.get(gender_identity);
+
+export { add, get, edit, getUser, getGendered };
