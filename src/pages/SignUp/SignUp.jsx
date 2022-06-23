@@ -27,7 +27,11 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // const response = await axios.put("http://localhost:3001/users/edit", {
+      //   formData,
+      // });
       const response = await userApi.edit(formData);
+      console.log(response);
       if (response.status === 200) {
         localStorage.removeItem("FirstStep");
         navigate("/dashboard");
