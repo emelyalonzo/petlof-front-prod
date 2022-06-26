@@ -31,7 +31,7 @@ const Signup = () => {
       //   formData,
       // });
       const response = await userApi.edit(formData);
-      console.log(response);
+      console.log( "prueba", response);
       if (response.status === 200) {
         localStorage.removeItem("FirstStep");
         navigate("/dashboard");

@@ -35,11 +35,11 @@ const Authmodal = ({ setShowModal, isSignUp }) => {
       }
 
 // First step of registration. Send to the API email and password.
-      const response = await axios.post(
-        `http://localhost:3001/users/${isSignUp ? "signup" : "signin"}`,
-        { email: email, hashed_password: password }
-      );
-      console.log(response);
+      // const response = await axios.post(
+      //   `http://localhost:3001/users/${isSignUp ? "signup" : "signin"}`,
+      //   { email: email, hashed_password: password }
+      // );
+      const response = await userApi.add(data);
       if (response.data.status === 400 && isSignUp) {
         setError(
           "A user with this email address already exists. Please enter a different one."
