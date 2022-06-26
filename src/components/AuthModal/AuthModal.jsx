@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import woolBall from "../../images/woolBall.svg";
 import closeicon from "../../images/closeIcon.svg";
+import { userApi } from "../../services";
 
 const Authmodal = ({ setShowModal, isSignUp }) => {
   const [email, setEmail] = useState(null);
@@ -39,7 +40,7 @@ const Authmodal = ({ setShowModal, isSignUp }) => {
       //   `http://localhost:3001/users/${isSignUp ? "signup" : "signin"}`,
       //   { email: email, hashed_password: password }
       // );
-      const response = await userApi.add(data);
+      const response = await userApi.add(isSignUp, { email: email, hashed_password: password });
       if (response.data.status === 400 && isSignUp) {
         setError(
           "A user with this email address already exists. Please enter a different one."

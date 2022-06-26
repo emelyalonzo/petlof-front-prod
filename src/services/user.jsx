@@ -7,7 +7,7 @@ const api = axios.create({
     baseURL,
 });
 
-const add = (data) => api.post(`/${endpoint}`, data)
+const add = (isSignUp, data) => api.post(`/${endpoint}/${isSignUp ? "signup" : "signin"}`, data)
 
 
 const get = () => api.get();
