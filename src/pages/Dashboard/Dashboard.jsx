@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
-import { userApi } from "../../services";
+import { matchApi, userApi } from "../../services";
 import axios from "axios";
 
 const Dashboard = () => {
@@ -52,12 +52,13 @@ const Dashboard = () => {
   // Send data to the API with the chosen matches.
   const updatedMatches = (matchedUserId) => {
     try {
-      axios
-        .put("http://localhost:3001/match/addmatch", {
-          userId,
-          matchedUserId,
-        })
-        .then(() => getUser());
+      // axios
+      //   .put("http://localhost:3001/match/addmatch", {
+      //     userId,
+      //     matchedUserId,
+      //   })
+      //   .then(() => getUser());
+      matchApi.add(userId, matchedUserId).then(() => getUser())
     } catch (err) {
       console.log(err);
     }
@@ -73,17 +74,7 @@ const Dashboard = () => {
 
   const outOfFrame = (name) => {};
 
-  //* La plataforma no nos debe sugerir el usuario registrado ni tampoco los usuarios que ya son match, por lo que los ids de estos usuarios
-  //* incluyendo el propio estarán en un array de strings llamado matchedUserIds.
-  //* Para obtener el array de strings se hace un map de los matches del usuario registrado, y por cada posicion de ese array
-  //* matches el objeto de usuario que estaba se transforma SOLO en el id del propio usuario.
-  //* Ademas se hace concat del id del usuario registrado para que éste tampoco aparezca en las sugerencias de match.
-
   const matchedUserIds = user?.matches.map((id) => id).concat(Id);
-
-  // console.log("matchedUserIds",matchedUserIds)
-  //* Ahora hay que descartar los usuarios cuyo id se encuentre en el array de matchedUserIds, es decir, o bien sea el id del usuario loggeado
-  //* o bien sea el id de alguno de los matches del usuario loggeado.
 
   const filteredGenderedUsers = genderedUsers?.filter(
     (genderedUser) => !matchedUserIds.includes(genderedUser._id)
