@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
+import { userApi } from "../../services";
 import axios from "axios";
 
 const Dashboard = () => {
@@ -16,11 +17,7 @@ const Dashboard = () => {
   // API responds with the registered user
   const getUser = async () => {
     try {
-      const {
-        data: { data },
-      } = await axios.get("http://localhost:3001/users", {
-        params: { id: userId },
-      });
+      const { data: { data }} = await userApi.getUser(userId);
       setUser(data.user);
     } catch (err) {
       console.log(err);
@@ -30,11 +27,12 @@ const Dashboard = () => {
   // API responds with the list of people with chosen gender.
   const getGenderedUser = async (user) => {
     try {
-      const {
-        data: { data },
-      } = await axios.get("http://localhost:3001/gender", {
-        params: { gender_identity: user?.gender_interest },
-      });
+      // const {
+      //   data: { data },
+      // } = await axios.get("http://localhost:3001/gender", {
+      //   params: { gender_identity: user?.gender_interest },
+      // });
+      const { data: { data }} = await userApi.getGendered(user?.gender_interest)
       setGenderedUsers(data.users);
     } catch (err) {
       console.log(err);

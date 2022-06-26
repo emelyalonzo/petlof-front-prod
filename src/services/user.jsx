@@ -2,6 +2,7 @@ import axios from "axios";
 
 const apiKey = "localhost:3001";
 const endpoint = "users";
+const endpointGender = "gender";
 const baseURL = `http://${apiKey}`;
 const api = axios.create({
     baseURL,
@@ -9,13 +10,10 @@ const api = axios.create({
 
 const add = (isSignUp, data) => api.post(`/${endpoint}/${isSignUp ? "signup" : "signin"}`, data)
 
-
-const get = () => api.get();
-
 const edit = (formData) => api.put(`/${endpoint}/edit`, formData)
 
-const getUser = (id) => api.get(id);
+const getUser = (userId) => api.get(`/${endpoint}`, {params: {id: userId}});
 
-const getGendered = (gender_identity) => api.get(gender_identity);
+const getGendered = (gender_interest) => api.get(`/${endpointGender}`,{params: {gender_identity: gender_interest}});
 
-export { add, get, edit, getUser, getGendered };
+export { add, edit, getUser, getGendered };
