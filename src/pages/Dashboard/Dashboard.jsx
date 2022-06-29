@@ -15,7 +15,6 @@ const Dashboard = () => {
   localStorage.removeItem("FirstStep");
   localStorage.setItem("Dashboard", "true");
 
-  // API responds with the registered user
   const getUser = async () => {
     try {
       const { data: { data }} = await userApi.getUser(userId);
@@ -25,14 +24,8 @@ const Dashboard = () => {
     }
   };
 
-  // API responds with the list of people with chosen gender.
   const getGenderedUser = (user) => {
     try {
-      // const {
-      //   data: { data },
-      // } = await axios.get("http://localhost:3001/gender", {
-      //   params: { gender_identity: user?.gender_interest },
-      // });
       userApi.getGendered(user?.gender_interest).then((response) => {      
         setGenderedUsers(response.data.data.users)
         setLoading(false)
@@ -53,22 +46,14 @@ const Dashboard = () => {
     }
   }, [user, genderedUsers]);
 
-  // Send data to the API with the chosen matches.
   const updatedMatches = (matchedUserId) => {
     try {
-      // axios
-      //   .put("http://localhost:3001/match/addmatch", {
-      //     userId,
-      //     matchedUserId,
-      //   })
-      //   .then(() => getUser());
       matchApi.add(userId, matchedUserId).then(() => getUser())
     } catch (err) {
       console.log(err);
     }
   };
 
-  // Swipe functionality
   const swiped = (direction, swipedUserId) => {
     if (direction === "right") {
       updatedMatches(swipedUserId);
@@ -83,10 +68,6 @@ const Dashboard = () => {
   const filteredGenderedUsers = genderedUsers?.filter(
     (genderedUser) => !matchedUserIds.includes(genderedUser._id)
   );
-
-  // if (!user || !genderedUsers) {
-  //   return "401";
-  // }
 
   return (
     <div>
