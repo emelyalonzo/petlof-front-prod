@@ -111,3 +111,21 @@
 .card h3 {
     margin-top: 0;
 }
+
+
+.loading-page {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: rgb(255,217,217);
+    background: radial-gradient(circle, rgba(255,217,217,1) 0%, rgba(226,125,125,1) 63%, rgba(255,0,0,1) 100%);
+    .spinner {
+        width: 200px;
+        height: 200px;
+    }
+}

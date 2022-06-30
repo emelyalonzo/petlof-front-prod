@@ -71,10 +71,8 @@ const Dashboard = () => {
 
   return (
     <div>
-    {loading ? <Spinner animation="border" color="primary">
-                <span className="visually-hidden">Loading...</span>
-      </Spinner> : 
-      <div className="dashboard">
+    {loading ? <div className="loading-page"><Spinner className="spinner" animation="border" color="primary"><span className="visually-hidden">Loading...</span></Spinner></div> 
+      : <div className="dashboard">
         <div className="chatContainer-colum">
           <ChatContainer user={user} />
         </div>
