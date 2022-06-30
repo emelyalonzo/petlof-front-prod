@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import Context from "../context/StaticContext";
 import { userApi } from "../services";
 
-const UseUser = () => {
+const useUser = () => {
   const [user, setUser] = useState([]);
   const { userContext, setUserContext } = useContext(Context);
 
@@ -10,10 +10,12 @@ const UseUser = () => {
     userContext && setUser(userContext);
   }, [userContext]);
 
-  const add = ({ email, hashed_password }) => {
+  const edit = async (formData) => {
     try {
-      const { data } = userApi.add({ email, hashed_password });
+      const { data } = await userApi.edit(formData);
+      console.log("data useUser", data);
       setUserContext(data);
+      localStorage.removeItem("FirstStep");
     } catch (error) {
       console.error(error);
     }
@@ -21,8 +23,8 @@ const UseUser = () => {
 
   return {
     user,
-    add,
+    edit,
   };
 };
 
-export default UseUser;
+export default useUser;

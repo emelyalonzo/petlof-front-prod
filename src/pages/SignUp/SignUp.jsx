@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 import Nav from "../../components/Nav/Nav";
-import { userApi } from "../../services";
+// import { userApi } from "../../services";
+import  {useUser}  from "../../hooks"
 
 //TODO: Poner el codigo en estilos o react para que el input de gender_identity y gender_interest se pinten como seleccionados en el signup
 
 const Signup = () => {
   let localStorageUserId = localStorage.getItem("UserId");
   let navigate = useNavigate();
+  const {user, edit} = useUser();
 
   const [formData, setFormData] = useState({
     user_id: localStorageUserId,
@@ -23,23 +25,17 @@ const Signup = () => {
     matches: [],
   });
 
-  // Second step of registration. Send the remaining data to the API.
-  const handleSubmit = async (e) => {
+
+  const test = (e) => {
     e.preventDefault();
-    try {
-      // const response = await axios.put("http://localhost:3001/users/edit", {
-      //   formData,
-      // });
-      const response = await userApi.edit(formData);
-      console.log( "prueba", response);
-      if (response.status === 200) {
-        localStorage.removeItem("FirstStep");
-        navigate("/dashboard");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    console.log(user)
+    edit(formData)
+  }
+
+  if (user && user.first_name) {
+    console.log("user", user)
+    navigate("/dashboard");
+  }
 
   const handleChange = (e) => {
     const value =
@@ -64,7 +60,7 @@ const Signup = () => {
       <div className="bk-signup">
         <h2>CREATE ACCOUNT</h2>
       </div>
-        <form onSubmit={handleSubmit} className="signUpForm">
+        <form onSubmit={test} className="signUpForm">
           <section className="signUpForm__section">
             <label htmlFor="first_name">
             <h3 className="title-label">Name</h3>
