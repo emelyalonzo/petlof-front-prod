@@ -4,6 +4,8 @@ import { userApi } from "../services";
 
 const useUser = () => {
   const [user, setUser] = useState([]);
+  const [errAPI, setErrAPI] = useState();
+
   const { userContext, setUserContext } = useContext(Context);
 
   useEffect(() => {
@@ -21,9 +23,27 @@ const useUser = () => {
     }
   };
 
+  const add = async (isSignUp, email, password) => {
+    try {
+      console.log("hola")
+      const response = await userApi.add(isSignUp, { email: email, hashed_password: password });
+      console.log("hola")
+      setUser(response.data)
+      console.log("hola")
+      return;
+    } catch (error) {
+      console.log("hola")
+      console.log(error);
+      setErrAPI(error.response.data)
+      return;
+    }
+  }
+
   return {
     user,
     edit,
+    add, 
+    errAPI
   };
 };
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 import woolBall from "../../images/woolBall.svg";
 import closeicon from "../../images/closeIcon.svg";
-import { userApi } from "../../services";
+import { useUser } from "../../hooks";
 // import useUser from "../../hooks/useUser";
 
 const Authmodal = ({ setShowModal, isSignUp }) => {
@@ -11,6 +11,7 @@ const Authmodal = ({ setShowModal, isSignUp }) => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
+  const {user, add, errAPI} = useUser();
 
   let navigate = useNavigate();
 
@@ -36,31 +37,23 @@ const Authmodal = ({ setShowModal, isSignUp }) => {
         return;
       }
 
-// First step of registration. Send to the API email and password.
-      // const response = await axios.post(
-      //   `http://localhost:3001/users/${isSignUp ? "signup" : "signin"}`,
-      //   { email: email, hashed_password: password }
-      // );
-      const response = await userApi.add(isSignUp, { email: email, hashed_password: password });
-      // const { add } = useUser();
-      if (response.data.status === 400 && isSignUp) {
-        setError(
-          "A user with this email address already exists. Please enter a different one."
-        );
-        return;
+      add(isSignUp, email, password);
+      console.log(errAPI)
+      if (errAPI && errAPI.includes('Please login') && isSignUp) {
+        setError(errAPI)
       }
 
-      if (response.status === 200 && isSignUp) {
-        localStorage.setItem("AuthToken", response.data.token);
-        localStorage.setItem("UserId", response.data.userId);
-        localStorage.setItem("Id", response.data.id);
+      if (user && isSignUp) {
+        localStorage.setItem("AuthToken", user.token);
+        localStorage.setItem("UserId", user.userId);
+        localStorage.setItem("Id", user.id);
         localStorage.setItem("FirstStep", "true");
         navigate("/signup");
       }
-      if (response.status === 200 && !isSignUp) {
-        localStorage.setItem("AuthToken", response.data.token);
-        localStorage.setItem("UserId", response.data.userId);
-        localStorage.setItem("Id", response.data.id);
+      if (user && !isSignUp) {
+        localStorage.setItem("AuthToken", user.token);
+        localStorage.setItem("UserId", user.userId);
+        localStorage.setItem("Id", user.id);
         navigate("/dashboard");
       }
     } catch (error) {
