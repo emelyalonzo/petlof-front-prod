@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
 @import "./common/vars.scss";
 @import "./pages/Home/home";
 @import "./pages/About/about";
@@ -12,7 +14,6 @@
 @import "./components/Nav/Nav";
 @import "./components/MatchesDisplay/matchesDisplay";
 // get our fontawesome imports
-
 html, body {
   margin: 0;
   padding: 0;

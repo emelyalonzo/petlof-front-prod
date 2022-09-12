@@ -111,3 +111,20 @@
 .card h3 {
     margin-top: 0;
 }
+
+
+.loading-page {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: rgb(199, 51, 51);
+    .spinner {
+        width: 100px;
+        height: 100px;
+    }
+}

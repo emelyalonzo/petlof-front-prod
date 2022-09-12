@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import { matchApi } from '../../services';
 
 const Matchesdisplay = ({ matches, setClickedUser }) => {
 
@@ -10,9 +11,10 @@ const Matchesdisplay = ({ matches, setClickedUser }) => {
 
     const getMatches = async () => {
         try {
-            const {data: {data}} = await axios.get('http://localhost:3001/match', {
-                params: {userIds: JSON.stringify(matchedUserIds)}
-            })
+            // const {data: {data}} = await axios.get('http://localhost:3001/match', {
+            //     params: {userIds: JSON.stringify(matchedUserIds)}
+            // })
+            const {data: {data}} = await matchApi.get(matchedUserIds)
             console.log(data.foundUsers)
             setMatchedProfiles(data.foundUsers);
         } catch (err) {
